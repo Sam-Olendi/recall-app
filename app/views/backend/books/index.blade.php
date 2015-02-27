@@ -9,7 +9,7 @@ My Books
 	+ Add New Book
 </a>
 
-<div ng-controller="BooksCtrl">
+<div>
 	<table class="table table-striped table-hover table-row-link">
 		<thead>
 			<tr>

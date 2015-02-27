@@ -9,7 +9,8 @@ class ExercisesController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('backend.exercises.index')
+				->with('exercises', Exercise::all());
 	}
 
 
@@ -20,7 +21,7 @@ class ExercisesController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('backend.exercises.create');
 	}
 
 

@@ -38,7 +38,8 @@ Route::resource('learnersession', 'LearnersSessionController', ['only' => ['crea
 Route::resource('teachers', 'TeachersController', ['except' => 'index']);
 Route::resource('teachersession', 'TeachersSessionController', ['only' => ['create', 'store', 'destroy']]);
 Route::resource('books', 'BooksController', ['except' => 'show']);
-Route::resource('subjects', 'SubjectsController', ['except' => 'show']);
+Route::resource('subjects', 'SubjectsController', ['except' => 'show' ]);
+Route::resource('subjects.exercises', 'ExercisesController');
 
 
 
@@ -66,5 +67,6 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 
 	Route::get('/mybooks', 'BooksController@index');
 	Route::get('/mysubjects', 'SubjectsController@index');
+	Route::get('/myexercises', 'ExercisesController@index');
 
 });
