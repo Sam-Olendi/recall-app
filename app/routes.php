@@ -38,8 +38,10 @@ Route::resource('learnersession', 'LearnersSessionController', ['only' => ['crea
 Route::resource('teachers', 'TeachersController', ['except' => 'index']);
 Route::resource('teachersession', 'TeachersSessionController', ['only' => ['create', 'store', 'destroy']]);
 Route::resource('books', 'BooksController', ['except' => 'show']);
-Route::resource('subjects', 'SubjectsController', ['except' => 'show' ]);
+Route::resource('subjects', 'SubjectsController');
 Route::resource('subjects.exercises', 'ExercisesController');
+Route::resource('subjects.exercises.questions', 'QuestionsController', ['except' => 'index']);
+
 
 
 

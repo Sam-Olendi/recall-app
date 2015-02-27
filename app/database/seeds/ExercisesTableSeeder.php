@@ -5,7 +5,7 @@ class ExercisesTableSeeder extends Seeder {
 	public function run()
 	{
 		Exercise::create([
-			'exercise_name'			=> 'Numbers I',
+			'exercise_name'			=> 'Numbers',
 			'exercise_description'	=> 'Ready. Set. Go! Learn how to have fun with numbers',
 			'subject_id'			=> 1
 		]);

@@ -5,7 +5,7 @@
 -Create authentication
 -Migrate books
 -CRUD on books
-Migrate subject-related tables
+-Migrate subject-related tables
 CRUD on those
 Migrate scores table
 Create quiz

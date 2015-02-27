@@ -1,5 +1,16 @@
 <?php
 
 class Question extends \Eloquent {
-	protected $fillable = [];
+
+	protected $guarded = [];
+
+	public static $rules = [
+		'question_text'		=> 'required'
+	];
+
+	public function exercise()
+	{
+		return $this->belongsTo('Exercise');
+	}
+	
 }

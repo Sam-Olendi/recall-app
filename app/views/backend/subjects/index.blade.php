@@ -25,7 +25,7 @@ My Subjects
 			<tr>
 				<th> {{ $subject->id }} </th>
 				<th> <img src="{{ $subject->subject_icon }}"> </th>
-				<th> {{ $subject->subject_name }} </th>
+				<th> <a href="/subjects/{{$subject->id}}"> {{ $subject->subject_name }} </a></th>
 				<th class="table-description"> {{ $subject->subject_description }} </th>
 				<th class="table-tools">
 					<a href="/subjects/{{$subject->id}}/edit" class="btn btn-hover-tools btn-default left"> Edit</a>

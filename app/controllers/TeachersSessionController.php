@@ -27,6 +27,15 @@ class TeachersSessionController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($validator->messages());
 		}
 
+		// $email =  Input::get('email');
+		// $user = User::where('email', '=', $email)->get();
+
+		// return $user->roles();
+
+		// if ( $user ) {
+		// 	return 'You cannot log in';
+		// }
+
 		$attempt = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]);
 
 		if ( $attempt ) {

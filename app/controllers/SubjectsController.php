@@ -66,7 +66,12 @@ class SubjectsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$subject = Subject::find($id);
+		$exercises = $subject->exercises;
+
+		return View::make('backend.subjects.show')
+			->with('subject', $subject)
+			->with('exercises', $exercises);
 	}
 
 
