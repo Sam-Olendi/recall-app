@@ -1,0 +1,12 @@
+-Create hierarchy
+-Create views
+-Migrate users
+-Create accounts
+-Create authentication
+-Migrate books
+-CRUD on books
+Migrate subject-related tables
+CRUD on those
+Migrate scores table
+Create quiz
+Create reports

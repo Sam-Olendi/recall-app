@@ -1,0 +1,1 @@
+Show teacher's profile
