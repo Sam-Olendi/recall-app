@@ -51,9 +51,10 @@ Route::group(['prefix' => '/learner', 'before' => 'auth'], function(){
 		return View::make('frontend.accounts.landing'); 
 	});
 
-	Route::get('/classroom', function(){
-		return View::make('frontend.subjects.index');
-	});
+	Route::get('/classroom', 'LearnersSubjectsController@index');
+	Route::get('/classroom/subjects/{subject}', 'LearnersSubjectsController@show');
+	Route::get('/classroom/subjects/{subject}/exercises/{exercise}', 'LearnersExercisesController@show');
+	Route::get('/library', 'LearnersBooksController@index');
 
 });
 

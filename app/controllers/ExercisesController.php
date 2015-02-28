@@ -68,13 +68,15 @@ class ExercisesController extends \BaseController {
 	 */
 	public function show($subject_id, $exercise_id)
 	{
-		$exercise = Exercise::find($exercise_id);
+		$exercise = Exercise::findorFail($exercise_id);
 		$questions = $exercise->questions;
+		$answers = $exercise->answers;
 
 		return View::make('backend.exercises.show')
 			->with('subject_id', $subject_id)
 			->with('exercise', $exercise)
-			->with('questions', $questions);
+			->with('questions', $questions)
+			->with('answers', $answers);
 	}
 
 

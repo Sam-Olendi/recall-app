@@ -20,4 +20,9 @@ class Exercise extends \Eloquent {
 	{
 		return $this->hasMany('Question');
 	}
+
+	public function answers()
+	{
+		return $this->hasManyThrough('Answer', 'Question', 'exercise_id', 'question_id');
+	}
 }

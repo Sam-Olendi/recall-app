@@ -12,5 +12,10 @@ class Question extends \Eloquent {
 	{
 		return $this->belongsTo('Exercise');
 	}
+
+	public function answers()
+	{
+		return $this->hasMany('Answer');
+	}
 	
 }

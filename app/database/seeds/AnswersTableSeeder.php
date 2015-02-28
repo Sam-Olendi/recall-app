@@ -17,7 +17,7 @@ class AnswersTableSeeder extends Seeder {
 		]);
 
 		Answer::create([
-			'answer_text'		=> 'This is answer 2',
+			'answer_text'		=> 'This is answer 3',
 			'answer_correct'	=> 1,
 			'question_id'		=> 1
 		]);
