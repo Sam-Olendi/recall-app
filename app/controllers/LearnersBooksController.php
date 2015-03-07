@@ -9,7 +9,8 @@ class LearnersBooksController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		return View::make('frontend.books.index')
+					->with('books', Book::all());
 	}
 
 

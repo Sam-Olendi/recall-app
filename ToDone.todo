@@ -8,7 +8,7 @@
 + Migrate subject-related tables
 + Subjects CRUD
 + Questions CRUD
---- Frontend views
+-- Frontend views
 -- Answers CRUD
 -- Migrate scores table
 ----- Create quiz

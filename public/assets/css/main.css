@@ -786,7 +786,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-wrapper {
 	background-color: rgb( 249, 249, 249 );
-	height: 100vh;
+	min-height: 100vh;
 	margin-top: -20px;
 }
 
@@ -810,7 +810,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quiz-box {
-	min-height: 350px;
+	min-height: 100px;
 	width: 90%;
 	margin: 50px auto;
 	border-radius: 5px;
@@ -839,4 +839,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .quiz-radio {
 	text-align: left;
+}
+
+.question-text {
+	font-family: 'Museo', sans-serif;
+	font-size: 19px;
+	padding-bottom: 20px;
+}
+
+.quiz-score {
+	text-align: center;
 }

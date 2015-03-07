@@ -26,6 +26,9 @@ Route::get('/teacher/login', 'TeachersSessionController@create');
 Route::get('/teacher/logout', 'TeachersSessionController@destroy');
 
 
+Route::post('/subjects/{subject}/exercises/{exercise}/questions/validate', 'QuizController@store');
+
+
 # Redirects
 Route::get('/login', function(){
 	return Redirect::to('/');
@@ -41,7 +44,7 @@ Route::resource('books', 'BooksController', ['except' => 'show']);
 Route::resource('subjects', 'SubjectsController');
 Route::resource('subjects.exercises', 'ExercisesController');
 Route::resource('subjects.exercises.questions', 'QuestionsController', ['except' => 'index']);
-
+// Route::resource('subjects.exercises.questions.answers', 'AnswersController');
 
 
 
@@ -71,5 +74,7 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::get('/mybooks', 'BooksController@index');
 	Route::get('/mysubjects', 'SubjectsController@index');
 	Route::get('/myexercises', 'ExercisesController@index');
+	Route::get('/performance', 'PerformancesController@index');
+	Route::get('/performance/{learner}', 'PerformancesController@show');
 
 });

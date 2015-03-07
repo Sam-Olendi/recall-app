@@ -1,16 +1,40 @@
 @extends('layouts.frontend')
-
 @section('content')
-
-<div class="container wrapper">
+<div class="main-wrapper">
+	<div class="quiz-wrapper">
+		<div class="quiz-title">
+			<h3 class="exercise-heading"> {{ $exercise->exercise_name }} </h3>
+			<p class="exercise-subtitle"> {{ $exercise->exercise_description }} </p>
+		</div>
 		
-	<h3> {{ $subject->subject_name }} </h3>
-	<p> {{ $subject->subject_description }} </p>
-	
-	@foreach($questions as $question)
-		{{ $question->question_text }}
-	@endforeach
+			{{ Form::open(['url' => 'subjects/'. $subject->id .'/exercises/' . $exercise->id . '/questions/validate']) }}
+			<?php
+				$i = 0;
+				$z = 0;
+			?>
+			@foreach($questions as $question)
+			<div class="quiz-box row">
+				<p class="question-text">{{ $question->question_text }}</p>
+				@foreach($question->answers as $answer)
+				<div class="form-group">
+					{{ Form::radio($count[$z], $answer->answer_correct) }}
+					{{ Form::label('') }}  {{$answer->answer_text}} <br>
+				</div>
+				<?php 
+					$i = $i+1;
+					$checkModulus = $i % 3;
+					if ( $checkModulus == 0){
 
+						$z = $z + 1;
+
+					}
+				 ?>
+				@endforeach
+				<br>
+			</div>
+			@endforeach
+			{{ Form::submit('Finish exercise', ['class' => 'btn btn-go right']) }}
+			{{ Form::close() }}
+	</div>
 </div>
-
 @stop

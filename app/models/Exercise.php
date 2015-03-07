@@ -25,4 +25,9 @@ class Exercise extends \Eloquent {
 	{
 		return $this->hasManyThrough('Answer', 'Question', 'exercise_id', 'question_id');
 	}
+
+	public function scores()
+	{
+		return $this->hasMany('Score');
+	}
 }

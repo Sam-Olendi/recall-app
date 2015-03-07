@@ -1,8 +1,5 @@
 <?php
 
-// Composer: "fzaninotto/faker": "v1.3.0"
-use Faker\Factory as Faker;
-
 class QuestionsTableSeeder extends Seeder {
 
 	public function run()
@@ -14,8 +11,9 @@ class QuestionsTableSeeder extends Seeder {
 
 		Question::create([
 			'question_text'	=> 'This is another sample question',
-			'exercise_id'	=> 2
+			'exercise_id'	=> 1
 		]);
+
 	}
 
 }
