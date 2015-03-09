@@ -10,9 +10,10 @@
 			<div class="subject-back left">
 				<div>
 					@if( $subject->subject_icon != null )
-					<img src="/{{ $subject->subject_icon }}" width="70px">
+					<img src="/{{ $subject->subject_icon }}" width="70px" class="subject-icon">
 					@else
-					<div class="subject-icon"></div>
+					{{-- <div class="subject-icon"></div> --}}
+					<img src="/assets/img/default.jpg" class="subject-icon">
 					@endif
 				</div>
 				<h4><a href="classroom/subjects/{{$subject->id}}"> {{ $subject->subject_name }} </a></h4>

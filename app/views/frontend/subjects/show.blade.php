@@ -10,7 +10,11 @@
 		@foreach($exercises as $exercise)
 			<div class="subject-back left">
 				<div>
-					<img src="" class="subject-icon">
+					@if( $exercise->exercise_icon != null )
+					<img src="/{{ $exercise->exercise_icon }}" width="70px" class="subject-icon">
+					@else
+					<img src="/assets/img/default.jpg" class="subject-icon">
+					@endif
 				</div>
 				<h4><a href="{{$subject->id}}/exercises/{{$exercise->id}}"> {{ $exercise->exercise_name }} </a></h4>
 				<p class="subject-description"> {{ $exercise->exercise_description }} </p>

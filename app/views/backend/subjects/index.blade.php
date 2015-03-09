@@ -38,7 +38,7 @@ My Subjects
 				@if ( $subject->subject_icon != null )
 				<th> <img src="/{{ $subject->subject_icon }}" width="30px"> </th>
 				@else
-				<th> <div class="subject-icon-small"></div> </th>
+				<th> <img src="/assets/img/default.jpg" width="30px"> </th>
 				@endif
 				<th> <a href="/subjects/{{$subject->id}}"> {{ $subject->subject_name }} </a></th>
 				<th class="table-description"> {{ $subject->subject_description }} </th>
