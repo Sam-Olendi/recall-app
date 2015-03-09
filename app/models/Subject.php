@@ -14,4 +14,9 @@ class Subject extends \Eloquent {
 		return $this->hasMany('Exercise');
 	}
 
+	public function scores()
+	{
+		return $this->hasManyThrough('Score', 'Exercise', 'subject_id', 'exercise_id');
+	}
+
 }

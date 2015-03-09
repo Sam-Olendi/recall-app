@@ -9,8 +9,15 @@ class BooksController extends \BaseController {
 	 */
 	public function index()
 	{
+		$books = Book::all();
+		$query = Request::get('q');
+
+		if ($query) {
+			$books = Book::where('book_title', 'LIKE', "%$query%")->get();
+		}
+
 		return View::make('backend.books.index')
-				->with('books', Book::all());
+				->with('books',$books);
 	}
 
 

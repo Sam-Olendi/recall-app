@@ -17,9 +17,12 @@ class CreateHighscoresTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+			$table->integer('subject_id')->unsigned();
+			$table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
 			$table->integer('exercise_id')->unsigned();
 			$table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
 			$table->integer('high_score')->default(0);
+			$table->integer('total_questions');
 			$table->timestamps();
 		});
 	}

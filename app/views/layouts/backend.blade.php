@@ -45,11 +45,8 @@
                 <!--Sidebar Menu-->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li class="active">
-                            <a href="/teacher/dashboard"><span class="glyphicon glyphicon-dashboard icon"></span><br> Dashboard</a>
-                        </li>
                         <li>
-                            <a href="/teacher/performance"><span class="glyphicon glyphicon-tasks icon"></span><br> Performance</a>
+                            <a href="/teacher/dashboard"><span class="glyphicon glyphicon-tasks icon"></span><br> Performance</a>
                         </li>
                         <li>
                             <a href="/teacher/mysubjects"><span class="glyphicon glyphicon-bookmark icon"></span><br> My Subjects</a>

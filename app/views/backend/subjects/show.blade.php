@@ -13,13 +13,23 @@
 		+ Add New Exercise
 	</a>
 
+	<p>Search</p>
+	{{ Form::open(['method' => 'get']) }}
+		<div class="form-group" >
+		{{ Form::input('search', 'q', null, ['class' => 'form-input', 'placeholder' => 'Search']) }}
+		{{ Form::submit('Search', ['class' => 'btn btn-go btn-hover-tools']) }}
+		</div>
+	{{ Form::close() }}
+
+	<hr>
+
 	<p>The following exercises are under {{ $subject->subject_name}}</p>
 	<table class="table table-striped table-hover table-row-link">
 		<thead>
 			<tr>
 				<th>#</th>
 				<th></th>
-				<th>Subject Name</th>
+				<th>Exercise Name</th>
 				<th>Description</th>
 				<th></th>
 			</tr>

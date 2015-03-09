@@ -27,14 +27,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'first_name'	=> 'required|min:2|alpha',
 		'last_name'		=> 'required|alpha',
 		'email'			=> 'email|required|unique:users',
-		'password'		=> 'required|min:4',
+		'password'		=> 'required|min:6|regex:[^.*(?=.{6,10})(?=.*\d)(?=.*[a-zA-Z]).*$]',
 		'user_photo'	=> 'mimes:jpg,jpeg,gif,png,bmp'
 	];
 
 	protected $guarded = [];
 
 	public function roles(){
-		return $this->belongsToMany('Role');
+		return $this->belongsToMany('Role', 'role_user', 'user_id', 'role_id');
 	}
 
 	public function scores(){

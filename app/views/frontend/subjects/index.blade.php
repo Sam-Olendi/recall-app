@@ -9,7 +9,11 @@
 		@foreach($subjects as $subject)
 			<div class="subject-back left">
 				<div>
-					<img src="" class="subject-icon">
+					@if( $subject->subject_icon != null )
+					<img src="/{{ $subject->subject_icon }}" width="70px">
+					@else
+					<div class="subject-icon"></div>
+					@endif
 				</div>
 				<h4><a href="classroom/subjects/{{$subject->id}}"> {{ $subject->subject_name }} </a></h4>
 				<p class="subject-description"> {{ $subject->subject_description }} </p>

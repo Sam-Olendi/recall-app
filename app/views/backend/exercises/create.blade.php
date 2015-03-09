@@ -15,7 +15,7 @@
 			<div class="form-group">
 				{{ Form::label('exercise_icon', 'Icon:') }} <br>
 				{{ Form::file('exercise_icon') }} <br>
-				{{ $errors->first('subject_icon', '<span class="error">:message</span> ') }}
+				{{ $errors->first('exercise_icon', '<span class="error">:message</span> ') }}
 			</div>
 			<div class="form-group">
 				{{ Form::label('exercise_description', 'Description:') }} <br>

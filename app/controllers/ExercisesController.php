@@ -9,8 +9,15 @@ class ExercisesController extends \BaseController {
 	 */
 	public function index()
 	{
+		$exercises = Exercise::all();
+		$query = Request::get('q');
+
+		if ($query) {
+			$exercises = Exercise::where('exercise_name', 'LIKE', "%$query%")->get();
+		}
+
 		return View::make('backend.exercises.index')
-				->with('exercises', Exercise::all());
+				->with('exercises', $exercises);
 	}
 
 

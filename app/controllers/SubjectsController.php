@@ -9,8 +9,15 @@ class SubjectsController extends \BaseController {
 	 */
 	public function index()
 	{
+		$subjects = Subject::all();
+		$query = Request::get('q');
+
+		if ($query) {
+			$subjects = Subject::where('subject_name', 'LIKE', "%$query%")->get();
+		}
+
 		return View::make('backend.subjects.index')
-				->with('subjects', Subject::all());
+				->with('subjects', $subjects);
 	}
 
 
@@ -68,6 +75,13 @@ class SubjectsController extends \BaseController {
 	{
 		$subject = Subject::find($id);
 		$exercises = $subject->exercises;
+		$query = Request::get('q');
+
+		if ($query) {
+			$exercises = Exercise::where('subject_id', '=', $id)
+								->where('exercise_name', 'LIKE', "%$query%")
+								->get();
+		}
 
 		return View::make('backend.subjects.show')
 			->with('subject', $subject)

@@ -8,8 +8,14 @@
 + Migrate subject-related tables
 + Subjects CRUD
 + Questions CRUD
--- Frontend views
++ Frontend views
 -- Answers CRUD
--- Migrate scores table
------ Create quiz
----- Create reports
++ Migrate scores table
++ Create quiz
++ Create reports
++ Create search
+---- Create sort by
+-- Add default photo
+-- Catch exceptions
+-- Create flash messages
+-- Create graph

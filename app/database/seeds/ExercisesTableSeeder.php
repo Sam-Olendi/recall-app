@@ -15,6 +15,20 @@ class ExercisesTableSeeder extends Seeder {
 			'exercise_description'	=> 'Learn how to get along with your friends',
 			'subject_id'			=> 1
 		]);
+
+		Exercise::create([
+			'exercise_name'			=> 'Courtesy',
+			'exercise_description'	=> 'Learn how to get along with your friends',
+			'subject_id'			=> 2
+		]);
+
+		Exercise::create([
+			'exercise_name'			=> 'Facial expressions',
+			'exercise_description'	=> 'Learn how to get along with your friends',
+			'subject_id'			=> 2
+		]);
+
+		
 	}
 
 }

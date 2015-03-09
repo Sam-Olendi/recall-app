@@ -74,7 +74,8 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::get('/mybooks', 'BooksController@index');
 	Route::get('/mysubjects', 'SubjectsController@index');
 	Route::get('/myexercises', 'ExercisesController@index');
-	Route::get('/performance', 'PerformancesController@index');
-	Route::get('/performance/{learner}', 'PerformancesController@show');
+	Route::get('/dashboard', 'PerformancesController@index');
+	Route::get('/dashboard/{learner}', 'PerformancesController@show');
+	Route::post('/dashboard/{learner}/report', 'PerformancesController@report');
 
 });

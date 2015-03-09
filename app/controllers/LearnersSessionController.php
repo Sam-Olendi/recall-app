@@ -20,7 +20,7 @@ class LearnersSessionController extends \BaseController {
 	 */
 	public function store()
 	{
-		$rules = ['email' => 'required', 'password' => 'required'];
+		$rules = ['email' => 'required', 'password' => 'required|min:6'];
 		$validator = Validator::make(Input::all(), $rules);
 
 		if ( $validator->fails() ) {

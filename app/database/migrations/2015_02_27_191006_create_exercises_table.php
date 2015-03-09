@@ -17,7 +17,7 @@ class CreateExercisesTable extends Migration {
 			$table->increments('id');
 			$table->string('exercise_name');
 			$table->string('exercise_description');
-			$table->string('exercise_icon');
+			$table->string('exercise_icon')->nullable();
 			$table->integer('subject_id')->unsigned();
 			$table->foreign('subject_id')->references('id')->on('subjects');
 			$table->timestamps();

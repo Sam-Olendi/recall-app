@@ -31,7 +31,7 @@ a:hover {
 	text-decoration: none;
 }
 
-input[type=text], textarea, select {
+input[type=text], input[type=search], textarea, select {
 	border-radius: 3px;
 	border: 1px solid #ccc;
 	color: #484848;
@@ -39,7 +39,7 @@ input[type=text], textarea, select {
 	font-size: 13px;
 }
 
-input[type=text], select {
+input[type=text], input[type=search], select {
 	height: 35px;
 	width: 200px;
 	padding: 3px 10px;	
@@ -392,6 +392,16 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 3px;
 	text-align: center;
 	margin-bottom: 10px;
+}
+
+.subject-icon-small {
+	width: 30px;
+	height: 30px;
+	background-color: #f4f4f4;
+	border-color: #f1f1f1;
+	/*box-shadow: 0px 3px 0px rgb( 218, 218, 218 );*/
+	border-radius: 3px;
+	text-align: center;
 }
 
 .activity-box {
@@ -849,4 +859,50 @@ h1, h2, h3, h4, h5, h6 {
 
 .quiz-score {
 	text-align: center;
+}
+
+
+
+/*
+==========================================
+	Performance Reports and Graphs
+==========================================
+*/
+
+.performance-box {
+	padding: 20px 10px;
+	border-radius: 5px;
+}
+
+.performance-box-loop {
+	background-color: #efefef;
+	border-radius: 5px;
+	width: 250px;
+	float: left;
+	padding: 20px 0 30px 20px;
+	margin-right: 30px;
+}
+
+.perf-box-heading {
+	background-color: #1f282f;
+	color: #fff;
+	padding: 15px 0 15px 20px;
+	border-radius: 5px 5px 0 0;
+	margin-bottom: 0;
+}
+
+.perf-box-scores {
+	background-color: #efefef;
+	padding: 20px;
+	border-radius: 0 0 5px 5px;
+}
+
+.perf-box-title {
+	margin-top: 0;
+	font-weight: bolder;
+}
+
+.perf-box-subtext {
+	color: #909090;
+	font-size: 12px;
 }

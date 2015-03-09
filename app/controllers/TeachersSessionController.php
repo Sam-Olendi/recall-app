@@ -27,14 +27,19 @@ class TeachersSessionController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($validator->messages());
 		}
 
-		// $email =  Input::get('email');
-		// $user = User::where('email', '=', $email)->get();
+		$email =  Input::get('email');
+		$user = User::where('email', '=', $email)->get(['id']);
 
-		// return $user->roles();
+		$user = array_get($user, '0');
+		$user_id = $user['id'];
 
-		// if ( $user ) {
-		// 	return 'You cannot log in';
-		// }
+		$user = User::find($user_id)->roles;
+		$user = $user[0];
+		$user = $user['role'];
+
+		if ( $user != 'teacher' ) {
+			return Redirect::to('/');
+		}
 
 		$attempt = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]);
 

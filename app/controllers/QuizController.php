@@ -53,6 +53,7 @@ class QuizController extends \BaseController {
 		# save data to database
 		$score = new Score;
 		$score->exercise_id = $exercise_id;
+		$score->subject_id = $subject_id;
 		$score->user_id = $user_id;
 		$score->total_questions = $question_number;
 		$score->user_score = $user_score;
@@ -69,8 +70,10 @@ class QuizController extends \BaseController {
 		if ( $highest_score < $user_score ) {
 			$highscore = new Highscore;
 			$highscore->user_id = $user_id;
+			$highscore->subject_id = $subject_id;
 			$highscore->exercise_id = $exercise_id;
 			$highscore->high_score = $user_score;
+			$highscore->total_questions = $question_number;
 			$highscore->save();
 		}
 
@@ -81,8 +84,10 @@ class QuizController extends \BaseController {
 		if ( $lowest_score > $user_score ) {
 			$lowscore = new Lowscore;
 			$lowscore->user_id = $user_id;
+			$lowscore->subject_id = $subject_id;
 			$lowscore->exercise_id = $exercise_id;
 			$lowscore->low_score = $user_score;
+			$lowscore->total_questions = $question_number;
 			$lowscore->save();
 		}
 
