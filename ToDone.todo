@@ -16,6 +16,7 @@
 + Create search
 ---- Create sort by
 + Add default photo
--- Catch exceptions
+- Catch exceptions
 -- Create flash messages
--- Create graph
+-- Fix graph error
++ Create graph

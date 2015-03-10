@@ -27,6 +27,10 @@
                 @yield('alerts')
                 <p class="subtitle">Simplifying the learning process</p>
 
+                @if(Session::has('success'))
+                    <p> {{ Session::get('sucess') }} </p>
+                @endif
+
                 <div class="login-box">
                     <h3>@yield('purpose')</h3>
                     @yield('form')

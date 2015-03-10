@@ -10,10 +10,10 @@
 			<div class="subject-back left">
 				<div>
 					@if( $subject->subject_icon != null )
-					<img src="/{{ $subject->subject_icon }}" width="70px" class="subject-icon">
+					<a href="classroom/subjects/{{$subject->id}}"><img src="/{{ $subject->subject_icon }}" width="70px" class="subject-icon"></a>
 					@else
 					{{-- <div class="subject-icon"></div> --}}
-					<img src="/assets/img/default.jpg" class="subject-icon">
+					<a href="classroom/subjects/{{$subject->id}}"><img src="/assets/img/default-2.jpg" class="subject-icon"></a>
 					@endif
 				</div>
 				<h4><a href="classroom/subjects/{{$subject->id}}"> {{ $subject->subject_name }} </a></h4>

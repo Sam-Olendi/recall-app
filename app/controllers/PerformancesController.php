@@ -122,7 +122,14 @@ class PerformancesController extends \BaseController {
 
 		# Scores for most recent exercises in said subject
 		$scores = $subjects->take(5);
+		$scores_all = Score::where('subject_id', '=', $subject_id)
+							->where('user_id', '=', $user_id)
+							->get();
+		$dates = Score::where('subject_id', '=', $subject_id)
+							->where('user_id', '=', $user_id)
+							->get(['created_at']);
 
+		
 		# Highest and lowest scores in said subject respectively
 		$highest_score = $subjects->max('user_score');
 		$high_total_questions = Highscore::where('subject_id', '=', $subject_id)->latest()->get();
@@ -155,7 +162,11 @@ class PerformancesController extends \BaseController {
 					->with('lowest_score', $lowest_score)
 					->with('low_total_questions', $low_total_questions)
 					->with('low_exercise', $low_exercise)
-					->with('recent_score', $recent_score);
+					->with('recent_score', $recent_score)
+					->with('dates', $scores_all->lists('created_at'))
+					// ->with('dates', $dates)
+					->with('scores_all', $scores_all->lists('user_score'))
+					->with('questions', $scores_all->lists('total_questions'));
 	}
 
 	/**

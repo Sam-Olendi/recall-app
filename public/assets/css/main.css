@@ -108,7 +108,6 @@ thead th {
   height: 40px;
   z-index: 3;
   border: none;
-  font-family: 'Museo', sans-serif;
   font-weight: 300;
 }
 
@@ -116,6 +115,10 @@ thead th {
 	color: #fff;
 	padding-right: 30px;
 	padding-left: 30px;
+	text-transform: uppercase;
+	font-weight: lighter;
+	font-size: 12px;
+	transition: .5s ease;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
@@ -125,11 +128,13 @@ thead th {
 .navbar-inverse .navbar-brand {
 	color: #fff;
 	font-weight: 900;
+  font-family: 'Museo', sans-serif;
 }
 
 .navbar {
 	margin-bottom: 0px;
 }
+
 
 /*
 ===================================
@@ -216,6 +221,11 @@ h1, h2, h3, h4, h5, h6 {
 .back-icon {
 	font-size: 14px;
 	color: #666;
+}
+
+.fa {
+	margin-right: 6px;
+	font-size: 14px;
 }
 
 
@@ -392,6 +402,12 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 3px;
 	text-align: center;
 	margin-bottom: 10px;
+	transition: .1s ease;
+}
+
+.subject-icon:hover {
+	border: 3px solid #3EC8D5;
+	border-radius: 35px;
 }
 
 .subject-icon-small {

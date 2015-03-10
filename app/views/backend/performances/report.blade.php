@@ -12,7 +12,9 @@ Student Performance:
 
 	<div class="row">
 		<div class="col-md-8">
-			
+			<canvas id="report-graph" width="600" height="300">
+				
+			</canvas>
 		</div>
 		<div class="col-md-4">
 			<h4>Recent Exercise Scores<hr></h4>
@@ -98,6 +100,33 @@ Student Performance:
 		</table>
 
 	</div>
+
+	<script>
+
+	(function(){
+		var ctx = document.getElementById('report-graph').getContext('2d');
+		var chart = {
+			labels: {{ json_encode($dates) }},
+			datasets: [{
+				data: {{ json_encode($questions) }},
+				fillColor: "#F8F8F8",
+				strokeColor: "#72b2bb",
+				pointColor: "#ff530d",
+				pointStrokeColor: "#fff",
+			},
+			{
+				data: {{ json_encode($scores_all) }},
+				fillColor: "#88dae6",
+				strokeColor: "#72b2bb",
+				pointColor: "#ff530d",
+				pointStrokeColor: "#fff",
+			}]
+		};
+
+		new Chart(ctx).Line(chart);
+	})();
+
+	</script>
 
 
 @stop

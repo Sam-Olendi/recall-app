@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}">
     <style>
       body {
         padding-top: 50px;
@@ -41,10 +42,10 @@
 	        </div><!--/.navbar-header-->
 	        <div id="navbar" class="navbar-collapse collapse">
 	           <ul class="nav navbar-nav navbar-right">
-	               <li><a href="/learner/classroom"><span class="glyphicon glyphicon-pencil"></span> Classroom</a></li>
-	               <li><a href="/learner/library"><span class="glyphicon glyphicon-book"></span> Library</a></li>
-	               <li class="dark-nav"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ Auth::user()->first_name }}</a></li>
-	               <li class="dark-nav"><a href="/learner/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+	               <li><a href="/learner/classroom"><i class="fa fa-pencil"></i> Classroom</a></li>
+	               <li><a href="/learner/library"><i class="fa fa-book"></i> Library</a></li>
+	               <li class="dark-nav"><a href="#"><i class="fa fa-user"></i> Hello, {{ Auth::user()->first_name }}</a></li>
+	               <li class="dark-nav"><a href="/learner/logout"><i class="fa fa-sign-out"></i> Log out</a></li>
 	            </ul>
 	        </div><!--/.navbar-collapse -->
         </div><!--/.container-->
