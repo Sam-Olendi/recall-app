@@ -12,7 +12,7 @@
 .navbar-brand {
 	width: 225px;
 	text-align: center;
-	 background-color: rgb( 63, 176, 190 );
+	background-color: #192026;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {

@@ -5,18 +5,19 @@ My Subjects
 @stop
 
 @section('content')
-<a href="/subjects/create" class="btn btn-go btn-top right">
+<div class="right btn-top">
+	<p>Search for subject</p>
+	{{ Form::open(['method' => 'get']) }}
+		<div class="form-group" >
+		{{ Form::input('search', 'q', null, ['class' => 'form-input', 'placeholder' => 'Search']) }}
+		{{ Form::submit('Search', ['class' => 'btn btn-go btn-hover-tools']) }}
+		</div>
+	{{ Form::close() }}
+</div>
+
+<a href="/subjects/create" class="btn btn-go ">
 	+ Add New Subject
 </a>
-
-
-<p>Search</p>
-{{ Form::open(['method' => 'get']) }}
-	<div class="form-group" >
-	{{ Form::input('search', 'q', null, ['class' => 'form-input', 'placeholder' => 'Search']) }}
-	{{ Form::submit('Search', ['class' => 'btn btn-go btn-hover-tools']) }}
-	</div>
-{{ Form::close() }}
 
 <hr>
 
@@ -35,11 +36,7 @@ My Subjects
 			@foreach($subjects as $subject)
 			<tr>
 				<th> {{ $subject->id }} </th>
-				@if ( $subject->subject_icon != null )
-				<th> <img src="/{{ $subject->subject_icon }}" width="30px"> </th>
-				@else
-				<th> <img src="/assets/img/default.jpg" width="30px"> </th>
-				@endif
+				<th> <img src="/assets/img/subject-icon.png" width="30px"> </th>
 				<th> <a href="/subjects/{{$subject->id}}"> {{ $subject->subject_name }} </a></th>
 				<th class="table-description"> {{ $subject->subject_description }} </th>
 				<th class="table-tools">

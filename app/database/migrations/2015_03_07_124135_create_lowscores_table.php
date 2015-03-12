@@ -23,6 +23,7 @@ class CreateLowscoresTable extends Migration {
 			$table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
 			$table->integer('low_score')->default(0);
 			$table->integer('total_questions');
+			$table->decimal('percentage', 5, 2);
 			$table->timestamps();
 		});
 	}

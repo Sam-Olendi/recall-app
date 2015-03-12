@@ -19,7 +19,7 @@
 			{{ Form::password('password', '' ,['placeholder' => 'Email']) }}
 		</div>
 		<div class="form-group">
-			<button type="submit" class="btn btn-go">Log in</button>	
+			<button type="submit" class="btn btn-go"><i class="fa fa-key"></i>Log in</button>	
 		</div>
 	{{ Form::close() }}
 

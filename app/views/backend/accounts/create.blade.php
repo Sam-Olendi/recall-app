@@ -21,11 +21,6 @@
 			{{ $errors->first('last_name', '<span class="error">:message</span>') }}
 		</div>
 		<div class="form-group">
-			{{ Form::label('photo', 'Photo:') }} <br>
-			{{ Form::file('photo') }}<br>
-			{{ $errors->first('photo', '<span class="error">:message</span>') }}
-		</div>
-		<div class="form-group">
 			{{ Form::label('email', 'Email address:') }} <br>
 			{{ Form::email('email', '' , ['placeholder' => 'Email address', 'class' => 'form-input']) }}<br>
 			{{ $errors->first('email', '<span class="error">:message</span>') }}
@@ -33,7 +28,7 @@
 		<div class="form-group">
 			{{ Form::label('password', 'Password:') }} <br>
 			{{ Form::password('password', '' , ['placeholder' => 'Password', 'class' => 'form-input']) }}<br>
-			{{ $errors->first('password', '<span class="error">:message</span>') }}
+			{{ $errors->first('password', '<span class="error">The password must be between 6 - 10 characters, with at least one number</span>') }}
 		</div>
 		<div class="form-group">
 			{{ Form::submit('Create account', ['class' => 'btn btn-go']) }}

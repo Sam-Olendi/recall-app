@@ -74,6 +74,7 @@ class QuizController extends \BaseController {
 			$highscore->exercise_id = $exercise_id;
 			$highscore->high_score = $user_score;
 			$highscore->total_questions = $question_number;
+			$highscore->percentage = round(($user_score/$question_number)*100, 2);
 			$highscore->save();
 		}
 
@@ -88,6 +89,7 @@ class QuizController extends \BaseController {
 			$lowscore->exercise_id = $exercise_id;
 			$lowscore->low_score = $user_score;
 			$lowscore->total_questions = $question_number;
+			$lowscore->percentage = round(($user_score/$question_number)*100, 2);
 			$lowscore->save();
 		}
 

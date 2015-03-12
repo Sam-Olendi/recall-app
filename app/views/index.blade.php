@@ -12,6 +12,8 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}">
+
 
         <script src="{{ asset('assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
     </head>
@@ -27,8 +29,8 @@
           <h1>Recall</h1>
           <p>Simplifying the learning process</p>
           <div class="btn-group">
-            <a href="/learner/login" class="btn-user"><span class="glyphicon glyphicon-pencil"></span> <br> Learner</a>
-            <a href="/teacher/login" class="btn-user"><span class="glyphicon glyphicon-briefcase"></span> <br> Teacher</a>
+            <a href="/learner/login" class="btn-user"><i class="fa fa-pencil"></i> <br> Learner</a>
+            <a href="/teacher/login" class="btn-user"><i class="fa fa-graduation-cap"></i> <br> Teacher</a>
           </div>
         </div>
       </div>

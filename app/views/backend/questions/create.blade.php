@@ -19,19 +19,19 @@
 			</div>
 			<hr>
 			<div class="form-group">
-				{{ Form::label('answer_text', 'Answer:') }} <br>
-				{{ Form::textarea('answer_text', '', ['placeholder' => 'Answer 1', 'class' => 'form-input']) }} <br>
-				{{ $errors->first('answer_text', '<span class="error">:message</span> ') }}
+				{{ Form::label('answer_text_1', 'Correct Answer:') }} <br>
+				{{ Form::textarea('answer_text_1', '', ['placeholder' => 'Answer 1', 'class' => 'form-input']) }} <br>
+				{{ $errors->first('answer_text_1', '<span class="error">:message</span> ') }}
 			</div>
 			<div class="form-group">
-				{{ Form::label('answer_text', 'Answer:') }} <br>
-				{{ Form::textarea('answer_text', '', ['placeholder' => 'Answer 2', 'class' => 'form-input']) }} <br>
-				{{ $errors->first('answer_text', '<span class="error">:message</span> ') }}
+				{{ Form::label('answer_text_2', 'Answer:') }} <br>
+				{{ Form::textarea('answer_text_2', '', ['placeholder' => 'Answer 2', 'class' => 'form-input']) }} <br>
+				{{ $errors->first('answer_text_2', '<span class="error">:message</span> ') }}
 			</div>
 			<div class="form-group">
-				{{ Form::label('answer_text', 'Answer:') }} <br>
-				{{ Form::textarea('answer_text', '', ['placeholder' => 'Answer 3', 'class' => 'form-input']) }} <br>
-				{{ $errors->first('answer_text', '<span class="error">:message</span> ') }}
+				{{ Form::label('answer_text_3', 'Answer:') }} <br>
+				{{ Form::textarea('answer_text_3', '', ['placeholder' => 'Answer 3', 'class' => 'form-input']) }} <br>
+				{{ $errors->first('answer_text_3', '<span class="error">:message</span> ') }}
 			</div>
 			<div class="form-group">
 				{{ Form::submit('Add question', ['class' => 'btn btn-go']) }}

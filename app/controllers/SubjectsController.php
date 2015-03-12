@@ -49,14 +49,14 @@ class SubjectsController extends \BaseController {
 		$subject->subject_name = Input::get('subject_name');
 		$subject->subject_description = Input::get('subject_description');
 
-		$image = Input::file('subject_icon');
+		// $image = Input::file('subject_icon');
 
-		if(Input::hasFile('subject_icon')){
-			$filename = time()."-".$image->getClientOriginalName();
-			$path = public_path('assets/img/subjects/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$subject->subject_icon = 'assets/img/subjects/'.$filename;
-		}
+		// if(Input::hasFile('subject_icon')){
+		// 	$filename = time()."-".$image->getClientOriginalName();
+		// 	$path = public_path('assets/img/subjects/'.$filename);
+		// 	Image::make($image->getRealPath())->resize(100, 100)->save($path);
+		// 	$subject->subject_icon = 'assets/img/subjects/'.$filename;
+		// }
 
 		$subject->save();
 
@@ -120,14 +120,14 @@ class SubjectsController extends \BaseController {
 		$subject->subject_name = Input::get('subject_name');
 		$subject->subject_description = Input::get('subject_description');
 
-		$image = Input::file('subject_icon');
+		// $image = Input::file('subject_icon');
 
-		if(Input::hasFile('subject_icon')){
-			$filename = time()."-".$image->getClientOriginalName();
-			$path = public_path('assets/img/subjects/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$subject->subject_icon = 'assets/img/subjects/'.$filename;
-		}
+		// if(Input::hasFile('subject_icon')){
+		// 	$filename = time()."-".$image->getClientOriginalName();
+		// 	$path = public_path('assets/img/subjects/'.$filename);
+		// 	Image::make($image->getRealPath())->resize(100, 100)->save($path);
+		// 	$subject->subject_icon = 'assets/img/subjects/'.$filename;
+		// }
 
 		$subject->save();
 

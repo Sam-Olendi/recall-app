@@ -45,14 +45,14 @@ class LearnersController extends \BaseController {
 		$learner->email = Input::get('email');
 		$learner->password = Hash::make(Input::get('password'));
 
-		$photo = Input::file('user_photo');
+		// $photo = Input::file('user_photo');
 
-		if ( Input::hasFile('user_photo') ) {
-			$filename = time()."-".$photo->getClientOriginalName();
-			$path = public_path('assets/img/learners/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$learner->user_photo = 'assets/img/learners/'.$filename;
-		}
+		// if ( Input::hasFile('user_photo') ) {
+		// 	$filename = time()."-".$photo->getClientOriginalName();
+		// 	$path = public_path('assets/img/learners/'.$filename);
+		// 	Image::make($image->getRealPath())->resize(100, 100)->save($path);
+		// 	$learner->user_photo = 'assets/img/learners/'.$filename;
+		// }
 
 		$learner->save();
 

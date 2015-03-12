@@ -12,6 +12,8 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+
 
         <script src="{{ asset('assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
     </head>
@@ -23,6 +25,7 @@
         <!--Main section-->
         <div class="landing">
             <div class="container">
+                <a href="/" class="btn btn-go btn-back"> <i class="fa fa-angle-left"></i> Go Back Home</a>
                 <h1> @yield('heading') </h1>
                 @yield('alerts')
                 <p class="subtitle">Simplifying the learning process</p>

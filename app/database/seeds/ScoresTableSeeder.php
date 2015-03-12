@@ -12,7 +12,15 @@ class ScoresTableSeeder extends Seeder {
 			'subject_id'		=> 1,
 			'user_id'			=> 1,
 			'total_questions'	=> 10,
-			'user_score'		=> 1
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 1,
+			'subject_id'		=> 1,
+			'user_id'			=> 1,
+			'total_questions'	=> 10,
+			'user_score'		=> 3
 		]);
 
 		Score::create([
@@ -20,7 +28,15 @@ class ScoresTableSeeder extends Seeder {
 			'subject_id'		=> 1,
 			'user_id'			=> 1,
 			'total_questions'	=> 10,
-			'user_score'		=> 6
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 2,
+			'subject_id'		=> 1,
+			'user_id'			=> 1,
+			'total_questions'	=> 10,
+			'user_score'		=> 3
 		]);
 
 		Score::create([
@@ -32,11 +48,27 @@ class ScoresTableSeeder extends Seeder {
 		]);
 
 		Score::create([
+			'exercise_id'		=> 3,
+			'subject_id'		=> 2,
+			'user_id'			=> 1,
+			'total_questions'	=> 10,
+			'user_score'		=> 3
+		]);
+
+		Score::create([
 			'exercise_id'		=> 4,
 			'subject_id'		=> 2,
 			'user_id'			=> 1,
 			'total_questions'	=> 10,
-			'user_score'		=> 10
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 4,
+			'subject_id'		=> 2,
+			'user_id'			=> 1,
+			'total_questions'	=> 10,
+			'user_score'		=> 3
 		]);
 	}
 }

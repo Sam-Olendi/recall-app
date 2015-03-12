@@ -35,14 +35,14 @@ class TeachersController extends \BaseController {
 		$teacher->email = Input::get('email');
 		$teacher->password = Hash::make(Input::get('password'));
 
-		$photo = Input::file('user_photo');
+		// $photo = Input::file('user_photo');
 
-		if ( Input::hasFile('user_photo') ) {
-			$filename = time()."-".$photo->getClientOriginalName();
-			$path = public_path('assets/img/teachers/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$teacher->user_photo = 'assets/img/teachers/'.$filename;
-		}
+		// if ( Input::hasFile('user_photo') ) {
+		// 	$filename = time()."-".$photo->getClientOriginalName();
+		// 	$path = public_path('assets/img/teachers/'.$filename);
+		// 	Image::make($image->getRealPath())->resize(100, 100)->save($path);
+		// 	$teacher->user_photo = 'assets/img/teachers/'.$filename;
+		// }
 
 		$teacher->save();
 

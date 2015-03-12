@@ -51,14 +51,14 @@ class ExercisesController extends \BaseController {
 		$exercise->exercise_description = Input::get('exercise_description');
 		$exercise->subject_id = $subject_id;
 
-		$image = Input::file('exercise_icon');
+		// $image = Input::file('exercise_icon');
 
-		if(Input::hasFile('exercise_icon')){
-			$filename = time()."-".$image->getClientOriginalName();
-			$path = public_path('assets/img/exercises/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$exercise->exercise_icon = 'assets/img/exercises/'.$filename;
-		}
+		// if(Input::hasFile('exercise_icon')){
+		// 	$filename = time()."-".$image->getClientOriginalName();
+		// 	$path = public_path('assets/img/exercises/'.$filename);
+		// 	Image::make($image->getRealPath())->resize(100, 100)->save($path);
+		// 	$exercise->exercise_icon = 'assets/img/exercises/'.$filename;
+		// }
 
 		$exercise->save();
 
@@ -120,14 +120,14 @@ class ExercisesController extends \BaseController {
 		$exercise->exercise_description = Input::get('exercise_description');
 		$exercise->subject_id = $subject_id;
 
-		$image = Input::file('exercise_icon');
+		// $image = Input::file('exercise_icon');
 
-		if(Input::hasFile('exercise_icon')){
-			$filename = time()."-".$image->getClientOriginalName();
-			$path = public_path('assets/img/exercises/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$exercise->exercise_icon = 'assets/img/exercises/'.$filename;
-		}
+		// if(Input::hasFile('exercise_icon')){
+		// 	$filename = time()."-".$image->getClientOriginalName();
+		// 	$path = public_path('assets/img/exercises/'.$filename);
+		// 	Image::make($image->getRealPath())->resize(100, 100)->save($path);
+		// 	$exercise->exercise_icon = 'assets/img/exercises/'.$filename;
+		// }
 
 		$exercise->save();
 

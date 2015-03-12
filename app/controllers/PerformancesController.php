@@ -27,27 +27,6 @@ class PerformancesController extends \BaseController {
 	}
 
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
 
 	/**
 	 * Display the specified resource.
@@ -80,7 +59,7 @@ class PerformancesController extends \BaseController {
 				$subject_total_questions[$subject_name] = $subject->scores->sum('total_questions');
 
 				if ( $subject_score[$subject_name] != 0 AND $subject_total_questions[$subject_name] !=0 ) {
-					$subject_percentage[$subject_name] = ($subject->scores->sum('user_score')/$subject->scores->sum('total_questions'))*100;
+					$subject_percentage[$subject_name] = round(($subject->scores->sum('user_score')/$subject->scores->sum('total_questions'))*100, 2);
 				}
 			}
 		}
@@ -118,7 +97,7 @@ class PerformancesController extends \BaseController {
 		# Percentage score for the selected subject under the given user id
 		$userscores = $subjects->sum('user_score');
 		$totalscores = $subjects->sum('total_questions');
-		$percentage = ($userscores / $totalscores) * 100; //percentage score
+		$percentage = round(($userscores / $totalscores) * 100, 2); //percentage score
 
 		# Scores for most recent exercises in said subject
 		$scores = $subjects->take(5);
@@ -129,7 +108,7 @@ class PerformancesController extends \BaseController {
 							->where('user_id', '=', $user_id)
 							->get(['created_at']);
 
-		
+	
 		# Highest and lowest scores in said subject respectively
 		$highest_score = $subjects->max('user_score');
 		$high_total_questions = Highscore::where('subject_id', '=', $subject_id)->latest()->get();
@@ -137,6 +116,7 @@ class PerformancesController extends \BaseController {
 		$high_total_questions = $high_total_questions_array['total_questions'];
 		$high_exercise_id = $high_total_questions_array['exercise_id'];
 		$high_exercise = Exercise::find($high_exercise_id);
+		
 
 		$lowest_score = $subjects->min('user_score');
 		$low_total_questions = Lowscore::where('subject_id', '=', $subject_id)->latest()->get();

@@ -9,14 +9,44 @@
 + Subjects CRUD
 + Questions CRUD
 + Frontend views
--- Answers CRUD
++ Create graph
 + Migrate scores table
 + Create quiz
 + Create reports
 + Create search
----- Create sort by
 + Add default photo
-- Catch exceptions
--- Create flash messages
--- Fix graph error
-+ Create graph
+
+Leftover Todos
++ Answers CRUD
++ Make it obvious what side of the system the user is accessing
++ Change backend colors
++ Randomize the order of answers
++ Exchange the positions of the search bar and new book
++ Use only default icons
++ Make 404 page
++ Catch exceptions
+---- Create flash messages
+---- Fix graph error: - Convert object to list item
+-- Create sort by
+
+Bugs
++ On edit, images do not upload
++ Under questions in the backend, it shows all answers
++ Chart js graph not showing data when only one value is fetched (showing data badly)
++ Cannot have multiple users logged in at the same time (Ask Gibson)
++ Percentage formula
+- Chart JS cannot fetch object: Convert object to a list
+
+Additional features
++ Ensure validation works
++ Add images to the completed quiz score
+- Find a way to add an animated scroll or stack slides to the questions
+- Animate the score icons with css (use svg)
+- Export data to Excel or PDF
+- Animate icons as SVGs
+
+Thakur Feedback
+- Make system informative
++ Make questions logical
++ Make topics simple and easy to understand
+

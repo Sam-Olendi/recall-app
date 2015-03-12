@@ -45,6 +45,27 @@ class QuestionsController extends \BaseController {
 
 		$question->save();
 
+		$question = Question::orderBy('id', 'desc')->first(['id']);
+		$question = $question['id'];
+
+		$answer1 = new Answer;
+		$answer1->answer_text = Input::get('answer_text_1');
+		$answer1->answer_correct = 1;
+		$answer1->question_id = $question;
+		$answer1->save();
+
+		$answer2 = new Answer;
+		$answer2->answer_text = Input::get('answer_text_2');
+		$answer2->answer_correct = 0;
+		$answer2->question_id = $question;
+		$answer2->save();
+
+		$answer3 = new Answer;
+		$answer3->answer_text = Input::get('answer_text_3');
+		$answer3->answer_correct = 0;
+		$answer3->question_id = $question;
+		$answer3->save();
+
 		return Redirect::to('/subjects/' . $subject_id . '/exercises/' . $exercise_id)
 			->with('success', 'The question has succesfully been created');
 	}

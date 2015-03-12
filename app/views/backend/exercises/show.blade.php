@@ -16,11 +16,13 @@
 	@foreach($questions as $question)
 		<div class="question-thumbnail left">
 			<div class="thumbnail">
-		      <img src="{{ $question->question_image }}" alt="...">
+				@if( $question->question_image != null )
+		      	<img src="{{ $question->question_image }}" alt="...">
+		      	@endif
 		      <div class="caption">
 		        <h4>{{ $question->question_text }}</h4>
 		        <ul>
-		        @foreach($answers as $answer)
+		        @foreach($question->answers as $answer)
 		        	<li>{{ $answer->answer_text }}</li>
 		        @endforeach
 		        </ul>

@@ -5,18 +5,20 @@ My Exercises
 @stop
 
 @section('content')
-<a href="/teacher/mysubjects" class="btn btn-go btn-top right">
-	+ Add New Exercise
-</a>
 
-	<p>Search</p>
+<div class="right btn-top">
+	<p>Search for exercise</p>
 	{{ Form::open(['method' => 'get']) }}
 		<div class="form-group" >
 		{{ Form::input('search', 'q', null, ['class' => 'form-input', 'placeholder' => 'Search']) }}
 		{{ Form::submit('Search', ['class' => 'btn btn-go btn-hover-tools']) }}
 		</div>
 	{{ Form::close() }}
+</div>
 
+<a href="/teacher/mysubjects" class="btn btn-go">
+	+ Add New Exercise
+</a>
 	<hr>
 
 	<table class="table table-striped table-hover table-row-link">

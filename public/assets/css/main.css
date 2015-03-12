@@ -111,6 +111,10 @@ thead th {
   font-weight: 300;
 }
 
+.navbar-inverse-admin {
+ 	box-shadow: 0px 2.598px 0px 0px #192026;
+}
+
 .navbar-inverse .navbar-nav>li>a {
 	color: #fff;
 	padding-right: 30px;
@@ -128,12 +132,34 @@ thead th {
 .navbar-inverse .navbar-brand {
 	color: #fff;
 	font-weight: 900;
-  font-family: 'Museo', sans-serif;
+  	font-family: 'Museo', sans-serif;
 }
 
 .navbar {
 	margin-bottom: 0px;
 }
+
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+	padding: 15px 8px 12px;
+}
+
+.navbar-inverse-admin {
+	background-color: #1f282f;
+}
+
+.navbar-brand-admin {
+	background-color: #1f282f;
+}
+
+.navbar-inverse-admin .navbar-nav>li>a:hover {
+	background-color: #192026;
+}
+
 
 
 /*
@@ -228,6 +254,24 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 14px;
 }
 
+.fa-arrow-left {
+	color: #bbb;
+	font-size: 25px;
+}
+
+.error-page {
+	background-color: #eee;
+}
+
+.error-section {
+	margin-top: 100px;
+	text-align: center;
+}
+
+.error-text {
+	margin-top: 100px;
+
+}
 
 /*
 ===================================
@@ -262,11 +306,13 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0 10px;
 	vertical-align: text-bottom;
 	font-size: 13px;
+	transition: .2s;
 }
 
 .btn-user:hover {
 	background-color: rgb( 63, 176, 190 );
 	box-shadow: 0px 2.598px 0px rgb( 45, 133, 144 );
+	opacity: .9;
 }
 
 .btn-user > a {
@@ -279,9 +325,14 @@ h1, h2, h3, h4, h5, h6 {
 	text-decoration: none;
 }
 
-.btn-user .glyphicon {
+.btn-user .fa {
 	font-size: 25px;
 	margin-bottom: 15px;
+	text-align: center;
+}
+
+.btn-back {
+	margin-top: 30px;
 }
 
 
@@ -304,7 +355,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 6rem;
 	margin-bottom: 0;
 	color: #fff;
-	margin-top: 12%;
+	margin-top: 60px;
 }
 
 .landing .subtitle {
@@ -396,7 +447,6 @@ h1, h2, h3, h4, h5, h6 {
 .subject-icon {
 	width: 70px;
 	height: 70px;
-	background-color: #f4f4f4;
 	border-color: #f1f1f1;
 	/*box-shadow: 0px 3px 0px rgb( 218, 218, 218 );*/
 	border-radius: 3px;
@@ -424,6 +474,13 @@ h1, h2, h3, h4, h5, h6 {
 	width: 70px;
 	height: 110px;
 	background-color: #f4f4f4;
+	transition: .1s ease;
+
+}
+
+.book-icon:hover {
+	border: 3px solid #909090;
+	border-radius: 5px;
 }
 
 .activity-box {
@@ -751,12 +808,6 @@ h1, h2, h3, h4, h5, h6 {
 	/*border-right: none;*/
 }
 
-.subject-icon {
-	width: 70px;
-	height: 70px;
-	background-color: #ddd;
-}
-
 .subject-icon-image {
 	width: 70px;
 	height: 70px;
@@ -807,7 +858,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .thumbnail {
-	min-height: 200px;
+	min-height: 100px;
+	padding: 10px 20px;
 }
 
 /*

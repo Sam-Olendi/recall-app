@@ -13,11 +13,6 @@
 			{{ $errors->first('subject_name', '<span class="error">:message</span> ') }}
 		</div>
 		<div class="form-group">
-			{{ Form::label('subject_icon', 'Subject Icon:') }} <br>
-			{{ Form::file('subject_icon') }} <br>
-			{{ $errors->first('subject_icon', '<span class="error">:message</span> ') }}
-		</div>
-		<div class="form-group">
 			{{ Form::label('subject_description', 'Subject Description:') }} <br>
 			{{ Form::textarea('subject_description', '', ['placeholder' => 'Subject Description', 'class' => 'form-input']) }} <br>
 			{{ $errors->first('subject_description', '<span class="error">:message</span> ') }}

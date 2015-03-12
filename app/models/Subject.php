@@ -5,7 +5,7 @@ class Subject extends \Eloquent {
 	protected $guarded = [];
 
 	public static $rules = [
-		'subject_name'			=> 'required:unique',
+		'subject_name'			=> 'required:unique|min:2|max:20',
 		'subject_description'	=> 'min:10'
 	];
 

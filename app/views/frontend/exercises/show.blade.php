@@ -15,7 +15,7 @@
 			@foreach($questions as $question)
 			<div class="quiz-box row">
 				<p class="question-text">{{ $question->question_text }}</p>
-				@foreach($question->answers as $answer)
+				@foreach($question->answers->shuffle() as $answer)
 				<div class="form-group">
 					{{ Form::radio($count[$z], $answer->answer_correct) }}
 					{{ Form::label('') }}  {{$answer->answer_text}} <br>

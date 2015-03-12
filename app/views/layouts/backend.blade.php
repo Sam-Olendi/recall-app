@@ -14,6 +14,8 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+
 
         <script src="{{ asset('assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
         <script src="/assets/js/vendor/chart.js"></script>
@@ -26,7 +28,7 @@
 
         <div id="wrapper">
             <!--Navigation-->
-            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <nav class="navbar navbar-inverse navbar-inverse-admin navbar-fixed-top" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -34,12 +36,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/teacher/dashboard">Recall</a>
+                    <a class="navbar-brand navbar-brand-admin" href="/teacher/dashboard">Recall: Teacher</a>
                 </div><!--/.navbar-header-->
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dark-nav"><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ Auth::user()->first_name }}</a></li>
-                        <li class="dark-nav"><a href="/teacher/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+                        <li class=""> <a href="/learner/classroom"> View classroom </a> </li>
+                        <li class=""><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ Auth::user()->first_name }}</a></li>
+                        <li class=""><a href="/teacher/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                     </ul>
                 </div><!--/.navbar-collapse -->
 

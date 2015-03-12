@@ -19,6 +19,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('QuestionsTableSeeder');
 		$this->call('AnswersTableSeeder');
 		$this->call('ScoresTableSeeder');
+		$this->call('RoleUserTableSeeder');
+		$this->call('HighscoresTableSeeder');
+		$this->call('LowscoresTableSeeder');
 		// $this->call('PerformancesTableSeeder');
 
 	}

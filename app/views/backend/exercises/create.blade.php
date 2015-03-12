@@ -13,11 +13,6 @@
 				{{ $errors->first('exercise_name', '<span class="error">:message</span> ') }}
 			</div>
 			<div class="form-group">
-				{{ Form::label('exercise_icon', 'Icon:') }} <br>
-				{{ Form::file('exercise_icon') }} <br>
-				{{ $errors->first('exercise_icon', '<span class="error">:message</span> ') }}
-			</div>
-			<div class="form-group">
 				{{ Form::label('exercise_description', 'Description:') }} <br>
 				{{ Form::textarea('exercise_description', '', ['placeholder' => 'Exercise description', 'class' => 'form-input']) }} <br>
 				{{ $errors->first('exercise_description', '<span class="error">:message</span> ') }}

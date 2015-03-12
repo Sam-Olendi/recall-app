@@ -110,7 +110,7 @@ Student Performance:
 			datasets: [{
 				data: {{ json_encode($questions) }},
 				fillColor: "#F8F8F8",
-				strokeColor: "#72b2bb",
+				strokeColor: "#ddd",
 				pointColor: "#ff530d",
 				pointStrokeColor: "#fff",
 			},
@@ -123,7 +123,7 @@ Student Performance:
 			}]
 		};
 
-		new Chart(ctx).Line(chart);
+		new Chart(ctx).Bar(chart);
 	})();
 
 	</script>
