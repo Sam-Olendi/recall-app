@@ -6,7 +6,7 @@
 @stop
 
 @section('content')
-		{{ Form::open(['route' => ['subjects.exercises.questions.store', $subject_id, $exercise_id]]) }}
+		{{ Form::open(['route' => ['subjects.exercises.questions.store', $subject_id, $exercise_id], 'files' => true, 'method' => 'post']) }}
 			<div class="form-group">
 				{{ Form::label('question_text', 'Question:') }} <br>
 				{{ Form::textarea('question_text', '', ['placeholder' => 'Question', 'class' => 'form-input']) }} <br>

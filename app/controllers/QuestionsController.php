@@ -34,14 +34,20 @@ class QuestionsController extends \BaseController {
 		$question->question_text = Input::get('question_text');
 		$question->exercise_id = $exercise_id;
 
-		$image = Input::file('question_image');
+		// $image = Input::file('question_image');
 
-		if(Input::hasFile('question_image')){
-			$filename = time()."-".$image->getClientOriginalName();
-			$path = public_path('assets/img/questions/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$exercise->exercise_icon = 'assets/img/questions/'.$filename;
-		}
+		// if(Input::hasFile('question_image')){
+		// 	$filename = time()."-".$image->getClientOriginalName();
+		// 	$path = public_path('assets/img/questions/'.$filename);
+		// 	Image::make($image->getRealPath())->resize(100, 100)->save($path);
+		// 	$exercise->exercise_icon = 'assets/img/questions/'.$filename;
+		// }
+
+		$image = Input::file('question_image');
+		$filename = time()."-".$image->getClientOriginalName();
+		$path = public_path('/assets/img/questions/'.$filename);
+		Image::make($image->getRealPath())->save($path);
+		$question->question_image = 'assets/img/questions/'.$filename;
 
 		$question->save();
 
@@ -91,10 +97,21 @@ class QuestionsController extends \BaseController {
 	 */
 	public function edit($subject_id, $exercise_id, $question_id)
 	{
+		$correct_answer = Answer::where('question_id', '=', $question_id)
+								->where('answer_correct', '=', 1)
+								->get();
+		$correct_answer = $correct_answer[0];
+
+		$other_answer_1 = Answer::where('question_id', '=', $question_id)
+								->where('answer_correct', '=', 0)
+								->first();
+
 		return View::make('backend.questions.edit')
 				->with('subject_id', $subject_id)
 				->with('exercise', Exercise::find($exercise_id))
-				->with('question', Question::find($question_id));
+				->with('question', Question::find($question_id))
+				->with('correct_answer', $correct_answer)
+				->with('other_answer_1', $other_answer_1);
 	}
 
 
@@ -117,15 +134,14 @@ class QuestionsController extends \BaseController {
 		$question->exercise_id = $exercise_id;
 
 		$image = Input::file('question_image');
-
-		if(Input::hasFile('question_image')){
-			$filename = time()."-".$image->getClientOriginalName();
-			$path = public_path('assets/img/questions/'.$filename);
-			Image::make($image->getRealPath())->resize(100, 100)->save($path);
-			$exercise->exercise_icon = 'assets/img/questions/'.$filename;
-		}
+		$filename = time()."-".$image->getClientOriginalName();
+		$path = public_path('/assets/img/questions/'.$filename);
+		Image::make($image->getRealPath())->save($path);
+		$question->question_image = 'assets/img/questions/'.$filename;
 
 		$question->save();
+
+		// Update the answers
 
 		return Redirect::to('/subjects/' . $subject_id . '/exercises/' . $exercise_id)
 			->with('success', 'The question has succesfully been updated');
@@ -140,6 +156,9 @@ class QuestionsController extends \BaseController {
 	 */
 	public function destroy($subject_id, $exercise_id, $question_id)
 	{
+
+		Answer::where('question_id', '=', $question_id)->delete();
+
 		Question::destroy($question_id);
 
 		return Redirect::to('/subjects/'.$subject_id.'/exercises/'.$exercise_id);

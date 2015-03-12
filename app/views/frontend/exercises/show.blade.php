@@ -15,6 +15,9 @@
 			@foreach($questions as $question)
 			<div class="quiz-box row">
 				<p class="question-text">{{ $question->question_text }}</p>
+				@if ( $question->question_image != null )
+				<img src="{{ $question->question_image }}">
+				@endif
 				@foreach($question->answers->shuffle() as $answer)
 				<div class="form-group">
 					{{ Form::radio($count[$z], $answer->answer_correct) }}
