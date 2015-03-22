@@ -31,7 +31,7 @@ a:hover {
 	text-decoration: none;
 }
 
-input[type=text], input[type=search], textarea, select {
+input[type=text], input[type=search], input[type=password], input[type=email],  textarea, select {
 	border-radius: 3px;
 	border: 1px solid #ccc;
 	color: #484848;
@@ -39,7 +39,7 @@ input[type=text], input[type=search], textarea, select {
 	font-size: 13px;
 }
 
-input[type=text], input[type=search], select {
+input[type=text], input[type=search], input[type=password], input[type=email], select {
 	height: 35px;
 	width: 200px;
 	padding: 3px 10px;	
@@ -158,6 +158,16 @@ thead th {
 
 .navbar-inverse-admin .navbar-nav>li>a:hover {
 	background-color: #192026;
+}
+
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+	background-color: #3ec8d5;
+	border-color: #3ec8d5;
+}
+
+.pagination>li>a,
+.pagination>li>span {
+	color: #909090;
 }
 
 
@@ -986,4 +996,48 @@ h1, h2, h3, h4, h5, h6 {
 .perf-box-subtext {
 	color: #909090;
 	font-size: 12px;
+}
+
+
+/*
+==========================================
+	Learner Profile
+==========================================
+*/
+
+.hero {
+	background-image: url('../../assets/img/geometry2.png');
+	max-height: 200px;
+	/*background-repeat: r*/
+	/*background-size: 100%;*/
+	/*color: #fff;*/
+	padding: 30px
+}
+
+.profile-score-box {
+	width: 250px;
+	background-color: #F9FAFB;
+	height: 130px;
+	border-radius: 5px;
+	float: left;
+	margin-right: 50px;
+}
+
+.psb-icon {
+	background-color: #cd4e38;
+	height: inherit;
+	border-radius: 5px 0 0 5px;
+	padding: 15px 0;
+}
+
+.psb-score {
+	padding-top: 30px;
+}
+
+.psb-score-subject {
+	margin-bottom: 0;
+}
+
+.psb-score-percentage {
+	margin-top: 0;
 }

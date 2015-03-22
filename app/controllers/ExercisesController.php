@@ -9,7 +9,7 @@ class ExercisesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$exercises = Exercise::all();
+		$exercises = Exercise::paginate(5);
 		$query = Request::get('q');
 
 		if ($query) {

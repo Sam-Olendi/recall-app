@@ -26,7 +26,7 @@ My Exercises
 			<tr>
 				<th>#</th>
 				<th></th>
-				<th>Exercise</th>
+				<th>{{ sort_by('exercise_name', 'Exercise' }}</th>
 				<th>Description</th>
 				<th></th>
 			</tr>
@@ -50,5 +50,6 @@ My Exercises
 		
 	</table>
 
+	{{ $exercises->links() }}
 
 @stop

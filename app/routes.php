@@ -38,7 +38,7 @@ Route::get('/login', function(){
 # These are resources for simplyfing CRUD operations and making them RESTful.
 Route::resource('learners', 'LearnersController');
 Route::resource('learnersession', 'LearnersSessionController', ['only' => ['create', 'store', 'destroy']]);
-Route::resource('teachers', 'TeachersController', ['except' => 'index']);
+Route::resource('teachers', 'TeachersController');
 Route::resource('teachersession', 'TeachersSessionController', ['only' => ['create', 'store', 'destroy']]);
 Route::resource('books', 'BooksController', ['except' => 'show']);
 Route::resource('subjects', 'SubjectsController');
@@ -58,6 +58,7 @@ Route::group(['prefix' => '/learner', 'before' => 'auth'], function(){
 	Route::get('/classroom/subjects/{subject}', 'LearnersSubjectsController@show');
 	Route::get('/classroom/subjects/{subject}/exercises/{exercise}', 'LearnersExercisesController@show');
 	Route::get('/library', 'LearnersBooksController@index');
+	Route::get('/profile', 'LearnersController@index');
 
 });
 
@@ -77,5 +78,11 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::get('/dashboard', 'PerformancesController@index');
 	Route::get('/dashboard/{learner}', 'PerformancesController@show');
 	Route::post('/dashboard/{learner}/report', 'PerformancesController@report');
+	Route::get('/profile', 'TeachersController@index');
+	Route::get('/mystudents', 'StudentsController@index');
+	Route::get('/mystudents/create', 'StudentsController@create');
+	Route::post('/mystudents', 'StudentsController@store');
+	Route::get('/mystudents/{student}/edit', 'StudentsController@edit');
+	Route::put('/mystudents/{student}', 'StudentsController@update');
 
 });

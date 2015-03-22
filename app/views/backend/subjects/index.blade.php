@@ -50,6 +50,8 @@ My Subjects
 		</tbody>
 		
 	</table>
+
+	{{ $subjects->links() }}
 </div>
 
 @stop

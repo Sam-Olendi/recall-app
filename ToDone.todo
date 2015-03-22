@@ -25,12 +25,15 @@ Leftover Todos
 + Use only default icons
 + Make 404 page
 + Catch exceptions
----- Create flash messages
++ Allow learner to view their performance
++ Add user profile (that the user can edit)
++ Allow teacher to edit and delete their own account
++ Update questions and answers
++ Allow teacher to add and delete a student
++ Change high/low scores formula
++ Pagination
+----- Create flash messages
 ---- Fix graph error: - Convert object to list item
--- Create sort by
--- Add user profile (that the user can edit)
--- Allow learner to view their performance
--- Update questions
 
 Bugs
 + On edit, images do not upload
@@ -39,6 +42,7 @@ Bugs
 + Cannot have multiple users logged in at the same time (Ask Gibson)
 + Percentage formula
 - Chart JS cannot fetch object: Convert object to a list
+- Fix search
 
 Additional features (very low priority)
 + Ensure validation works
@@ -46,7 +50,8 @@ Additional features (very low priority)
 + Animate icons as SVGs
 + Animate the score icons with css (use svg)
 - Find a way to add an animated scroll or stack slides to the questions
-- Export data to Excel or PDF
+-- Export data to Excel or PDF
+-- Create sort by
 
 Thakur Feedback
 - Make system informative

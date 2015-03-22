@@ -13,6 +13,11 @@ class SubjectsTableSeeder extends Seeder {
 			'subject_name'			=> 'Social Skills',
 			'subject_description'	=> 'Learn how to get along with your friends'
 		]);
+
+		Subject::create([
+			'subject_name'			=> 'English',
+			'subject_description'	=> "The Queen's Language"
+		]);
 	}
 
 }

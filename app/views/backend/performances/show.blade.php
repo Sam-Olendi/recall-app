@@ -25,4 +25,10 @@ Student Performance: {{ $user->first_name }} {{ $user->last_name }}
 		</div>
 	@endforeach
 
+
+	@foreach($subject_scores as $score)
+		{{-- {{ $score->subject->subject_name }} --}}
+		{{ $score->scores }}
+	@endforeach
+
 @stop

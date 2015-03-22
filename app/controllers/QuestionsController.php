@@ -100,6 +100,7 @@ class QuestionsController extends \BaseController {
 		$correct_answer = Answer::where('question_id', '=', $question_id)
 								->where('answer_correct', '=', 1)
 								->get();
+								
 		$correct_answer = $correct_answer[0];
 
 		$other_answer_1 = Answer::where('question_id', '=', $question_id)
@@ -140,8 +141,6 @@ class QuestionsController extends \BaseController {
 		$question->question_image = 'assets/img/questions/'.$filename;
 
 		$question->save();
-
-		// Update the answers
 
 		return Redirect::to('/subjects/' . $subject_id . '/exercises/' . $exercise_id)
 			->with('success', 'The question has succesfully been updated');

@@ -9,7 +9,7 @@ class SubjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$subjects = Subject::all();
+		$subjects = Subject::paginate(5);
 		$query = Request::get('q');
 
 		if ($query) {

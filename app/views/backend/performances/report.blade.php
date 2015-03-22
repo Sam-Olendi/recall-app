@@ -54,8 +54,8 @@ Student Performance:
 			<div class="performance-box">
 				<h5 class="perf-box-heading">Highest score in {{ $subject->subject_name }}</h5>
 				<div class="perf-box-scores">
-					<h2 class="perf-box-title"> {{ $highest_score }} out of {{ $high_total_questions }} ( {{ ($highest_score/$high_total_questions)*100 }}% ) </h2>
-					<p class="perf-box-subtext"> Exercise: {{ $high_exercise->exercise_name }} </p>
+					<h2 class="perf-box-title">  {{ $high_score->high_score }}  out of  {{ $high_score->total_questions }}  ( {{ $high_score_percentage }}% ) </h2>
+					<p class="perf-box-subtext"> Exercise:  {{$high_exercise->exercise_name}}  </p>
 				</div>
 			</div>
 		</div>
@@ -63,7 +63,7 @@ Student Performance:
 			<div class="performance-box">
 				<h5 class="perf-box-heading">Lowest score in {{ $subject->subject_name }}</h5>
 				<div class="perf-box-scores">
-					<h2 class="perf-box-title"> {{ $lowest_score }} out of {{ $low_total_questions }} ( {{ ($lowest_score/$low_total_questions)*100 }}% )</h2>
+					<h2 class="perf-box-title">  {{$low_score->low_score}}  out of  {{$low_score->total_questions}}  ( {{ $low_score_percentage }}% )</h2>
 					<p class="perf-box-subtext"> Exercise: {{ $low_exercise->exercise_name }} </p>
 				</div>
 			</div>

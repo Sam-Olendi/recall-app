@@ -43,7 +43,7 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li class=""> <a href="/learner/classroom"> View classroom </a> </li>
-                        <li class=""><a href="#"><span class="glyphicon glyphicon-user"></span> Hello, {{ Auth::user()->first_name }}</a></li>
+                        <li class=""><a href="/teacher/profile"><span class="glyphicon glyphicon-user"></span> Hello, {{ Auth::user()->first_name }}</a></li>
                         <li class=""><a href="/teacher/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                     </ul>
                 </div><!--/.navbar-collapse -->
@@ -62,6 +62,9 @@
                         </li>
                         <li>
                             <a href="/teacher/mybooks"><span class="glyphicon glyphicon-book icon"></span><br> Books</a>
+                        </li>
+                        <li>
+                            <a href="/teacher/mystudents"><span class="glyphicon glyphicon-book icon"></span><br> Learner Accounts</a>
                         </li>
                     </ul>
                 </div>

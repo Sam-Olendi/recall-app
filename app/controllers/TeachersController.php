@@ -3,6 +3,13 @@
 class TeachersController extends \BaseController {
 
 
+	public function index()
+	{
+		return View::make('backend.accounts.index')
+					->with('user', Auth::user());
+	}
+
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -87,7 +94,24 @@ class TeachersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(Input::all(), User::$editRules);
+
+		if ( $validator->fails() ) {
+			return Redirect::back()->withInput()->withErrors($validator->messages());
+		}
+
+		$email = User::find($id);
+		$email = $email->email;
+
+		$user = User::find($id);
+		$user->first_name = Input::get('first_name');
+		$user->last_name = Input::get('last_name');
+		$user->email = $email;
+		$user->password = Hash::make(Input::get('password'));
+		$user->save();
+
+		return Redirect::to('/teacher/dashboard')
+				->with('message', 'Your account has successfully been updated');
 	}
 
 
@@ -99,7 +123,9 @@ class TeachersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		User::destroy($id);
+
+		return Redirect::to('/');
 	}
 
 

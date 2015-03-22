@@ -4,8 +4,7 @@
 
 <div class="container wrapper">
 	
-	<h3><a href="/learner/classroom"> <i class="fa fa-arrow-left" ></i> </a> {{ $subject->subject_name }} </h3>
-	<p> {{ $subject->subject_description }} </p>
+	<h3><a href="/learner/classroom"> <i class="fa fa-arrow-left" ></i> </a> {{ $subject->subject_name }} <br> <small>{{ $subject->subject_description }}</small> </h3>
 	<div class="subjects">
 		@foreach($exercises as $exercise)
 			<div class="subject-back left">

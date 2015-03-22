@@ -9,7 +9,7 @@ class BooksController extends \BaseController {
 	 */
 	public function index()
 	{
-		$books = Book::all();
+		$books = Book::paginate(5);
 		$query = Request::get('q');
 
 		if ($query) {

@@ -44,7 +44,7 @@
 	           <ul class="nav navbar-nav navbar-right">
 	               <li><a href="/learner/classroom"><i class="fa fa-pencil"></i> Classroom</a></li>
 	               <li><a href="/learner/library"><i class="fa fa-book"></i> Library</a></li>
-	               <li class="dark-nav"><a href="#"><i class="fa fa-user"></i> Hello, {{ Auth::user()->first_name }}</a></li>
+	               <li class="dark-nav"><a href="/learner/profile"><i class="fa fa-user"></i> Hello, {{ Auth::user()->first_name }}</a></li>
 	               <li class="dark-nav"><a href="/learner/logout"><i class="fa fa-sign-out"></i> Log out</a></li>
 	            </ul>
 	        </div><!--/.navbar-collapse -->

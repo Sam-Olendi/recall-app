@@ -53,6 +53,8 @@ My Books
 		</tbody>
 		
 	</table>
+
+	{{ $books->links() }}
 </div>
 
 @stop

@@ -31,6 +31,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'user_photo'	=> 'mimes:jpg,jpeg,gif,png,bmp'
 	];
 
+	public static $editRules = [
+		'first_name'	=> 'required|min:2|alpha|max:20',
+		'last_name'		=> 'required|min:2|alpha|max:20',
+		'password'		=> 'required|min:6|regex:[^.*(?=.{6,10})(?=.*\d)(?=.*[a-zA-Z]).*$]',
+		'user_photo'	=> 'mimes:jpg,jpeg,gif,png,bmp'
+	];
+
 	protected $guarded = [];
 
 	public function roles(){

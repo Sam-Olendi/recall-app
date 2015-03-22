@@ -49,7 +49,6 @@
 			        @endforeach
 			        </ul>
 			        <p>
-				        <a href="/subjects/{{$subject_id}}/exercises/{{$exercise->id}}/questions/{{$question->id}}/edit" class="btn btn-default btn-hover-tools left" role="button">Edit</a>
 				        {{ Form::open(['route' => ['subjects.exercises.questions.destroy', $subject_id, $exercise->id, $question->id], 'method' => 'delete']) }}
 						{{ Form::submit('Delete', ['class' => 'btn btn-hover-tools btn-no']) }}
 						{{ Form::close() }}
