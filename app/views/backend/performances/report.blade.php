@@ -29,7 +29,7 @@ Student Performance:
 					@foreach($scores as $score)
 					<tr>
 						<th> {{ $score->exercise->exercise_name }} </th>
-						<th> {{ ($score->user_score/$score->total_questions)*100 }} </th>
+						<th> {{ round(($score->user_score/$score->total_questions)*100, 2) }}% </th>
 					</tr>
 					@endforeach
 				</tbody>
@@ -93,7 +93,7 @@ Student Performance:
 						<th> {{ $score->exercise->exercise_name }} </th>
 						<th> {{ $score->user_score }} </th>
 						<th> {{ $score->total_questions }} </th>
-						<th> {{ ($score->user_score/$score->total_questions)*100 }}% </th>
+						<th> {{ round(($score->user_score/$score->total_questions)*100, 2) }}% </th>
 					</tr>
 				@endforeach
 			</tbody>

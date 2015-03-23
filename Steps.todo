@@ -1,10 +1,18 @@
-Ideal reports
+Reports
+	`General reports`
+-- Overall student performance
 + Performance per subject
-- Best performing subject
-- Worst performing subject
-- Best performing exercise
-- Worst performing exercise
-- Overall student performance
++ Best performing subject
++ Worst performing subject
 - Best performing student
 - Worst performing student
 - Most improved student
+- Best performing exercise
+- Worst performing exercise
+
+	`Individual reports`
++ Best performing subject
++ Worst performing subject
++ Performance per subject (comparison)
++ Overall performance (scores)
++ Performance per subject (subject report)

@@ -5,17 +5,21 @@ My Books
 @stop
 
 @section('content')
-<a href="/books/create" class="btn btn-go btn-top right">
+<div class="right btn-top">
+	<p>Search for book</p>
+	{{ Form::open(['method' => 'get']) }}
+		<div class="form-group" >
+		{{ Form::input('search', 'q', null, ['class' => 'form-input', 'placeholder' => 'Search']) }}
+		{{ Form::submit('Search', ['class' => 'btn btn-go btn-hover-tools']) }}
+		</div>
+	{{ Form::close() }}
+</div>
+
+<a href="/books/create" class="btn btn-go">
 	+ Add New Book
 </a>
 
-<p>Search</p>
-{{ Form::open(['method' => 'get']) }}
-	<div class="form-group" >
-	{{ Form::input('search', 'q', null, ['class' => 'form-input', 'placeholder' => 'Search']) }}
-	{{ Form::submit('Search', ['class' => 'btn btn-go btn-hover-tools']) }}
-	</div>
-{{ Form::close() }}
+
 
 <hr>
 

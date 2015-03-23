@@ -32,8 +32,12 @@ Leftover Todos
 + Allow teacher to add and delete a student
 + Change high/low scores formula
 + Pagination
++ Position search bar in correct, consistent place
++ Make teacher subscribe to a student (such that a student belongs to a teacher)
 ----- Create flash messages
+---- Add more reports
 ---- Fix graph error: - Convert object to list item
+---- Implement export reports to PDF and/or Excel
 
 Bugs
 + On edit, images do not upload
@@ -49,9 +53,8 @@ Additional features (very low priority)
 + Add images to the completed quiz score
 + Animate icons as SVGs
 + Animate the score icons with css (use svg)
-- Find a way to add an animated scroll or stack slides to the questions
--- Export data to Excel or PDF
 -- Create sort by
+- Find a way to add an animated scroll or stack slides to the questions
 
 Thakur Feedback
 - Make system informative

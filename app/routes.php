@@ -84,5 +84,8 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::post('/mystudents', 'StudentsController@store');
 	Route::get('/mystudents/{student}/edit', 'StudentsController@edit');
 	Route::put('/mystudents/{student}', 'StudentsController@update');
+	Route::get('/learner/subscribe', 'StudentsController@subscribe');
+	Route::get('/learner/subscribe/{learner}', 'StudentsController@storeSubscription');
+
 
 });

@@ -16,19 +16,41 @@ Student Performance: {{ $user->first_name }} {{ $user->last_name }}
 
 	<hr>
 
-	<h4>Percentage performance per subject</h4>
+	<h4>Subject performance comparisons</h4>
+	@foreach($best_subject as $key => $best_subject)
+		<div class="">
+			<?php $subject = Subject::find($key) ?>
+			<h5 class="perf-box-heading">{{ $subject->subject_name }}</h5>
+			<div class="perf-box-scores">
+				<h4 class="perf-box-title">{{ $best_subject }}%</h4>
+			</div>
+		</div>
+	@endforeach
 
-	@foreach ($percentages as $subject => $percentage)
-		<div class="performance-box-loop">
-			<h4> {{ $subject }} </h4>
-			<p> {{ $percentage }}% </p>
+	@foreach($worst_subject as $key => $worst_subject)
+		<div class="">
+		<?php $subject = Subject::find($key) ?>
+		<h5 class="perf-box-heading">{{ $subject->subject_name }}</h5>
+			<div class="perf-box-scores">
+				<h4 class="perf-box-title">{{ $worst_subject }}%</h4>
+			</div>
 		</div>
 	@endforeach
 
 
-	@foreach($subject_scores as $score)
-		{{-- {{ $score->subject->subject_name }} --}}
-		{{ $score->scores }}
+	<hr>
+
+	<h4>Percentage performance per subject</h4>
+
+	@foreach($subject_scores as $key => $score)
+		<div class="performance-box performance-box-loop">
+			<?php $subject = Subject::find($score->subject_id) ?>
+			<h5 class="perf-box-heading">{{ $subject->subject_name }}</h5>
+			<div class="perf-box-scores">
+				<h4 class="perf-box-title">{{ round(($score->scores/$score->totals)*100, 2) }}%</h4>
+			</div>
+		</div>
 	@endforeach
 
+	
 @stop

@@ -58,6 +58,32 @@ class StudentsController extends \BaseController {
 				->with('success', 'The student has successfully been created');
 	}
 
+	public function subscribe()
+	{
+		$query = Request::get('q');
+
+		if ($query) {
+			$users = User::where('first_name', 'LIKE', "%$query%")
+								->orWhere('last_name', 'LIKE', "%$query%")
+								->get();	
+		} else {
+			$users = null;
+		}
+
+		return View::make('backend.students.subscribe', compact('users'));
+	}
+
+
+	public function storeSubscription($learner_id)
+	{
+		$subscription = Subscription::firstOrCreate([
+			'teacher_id' => Auth::user()->id,
+			'learner_id' => $learner_id
+		]);
+
+		return Redirect::to('/teacher/dashboard')
+					->with('success', 'You are now following the learner. You will be able to see all their results');
+	}
 
 	/**
 	 * Display the specified resource.

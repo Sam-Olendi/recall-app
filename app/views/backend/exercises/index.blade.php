@@ -26,7 +26,7 @@ My Exercises
 			<tr>
 				<th>#</th>
 				<th></th>
-				<th>{{ sort_by('exercise_name', 'Exercise' }}</th>
+				<th>Exercise</th>
 				<th>Description</th>
 				<th></th>
 			</tr>
