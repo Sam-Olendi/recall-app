@@ -229,9 +229,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .error {
-	color: #ff9e9e;
+	color: #fff;
+	background-color: #db1a21;
 	font-size: 10px;
 	font-style: italic;
+	padding: 3px 10px;
 }
 
 .btn-top {
@@ -327,6 +329,23 @@ h1, h2, h3, h4, h5, h6 {
 	margin-left: 80px;
 }
 
+.flash-message {
+	background-color: #db1a21;
+	font-size: 12px;
+	padding: 10px 0 4px;
+	width: 600px; 
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.success-message {
+	background-color: #8DC63F;
+	font-size: 12px;
+	padding: 10px 0 4px;
+	width: 600px; 
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
 
 
 
@@ -1008,8 +1027,13 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 .performance-box {
-	padding: 20px 10px;
+	/*padding: 20px 10px;*/
 	border-radius: 5px;
+}
+
+.performance-box-alt {
+	width: 45%;
+	margin-right: 20px;
 }
 
 .performance-box-loop {
@@ -1031,6 +1055,10 @@ h1, h2, h3, h4, h5, h6 {
 	border-radius: 0 0 5px 5px;
 }
 
+..perf-box-scores-alt {
+	padding: 10px 20px;
+}
+
 .perf-box-title {
 	margin-top: 0;
 	font-weight: bolder;
@@ -1039,6 +1067,24 @@ h1, h2, h3, h4, h5, h6 {
 .perf-box-subtext {
 	color: #909090;
 	font-size: 12px;
+}
+
+.perf-box-score {
+	font-size: 30px;
+}
+
+.perf-box-item {
+	width: 200px;
+}
+
+.report-block-title {
+	margin-bottom: 4px;
+}
+
+.report-block-subtitle {
+	color: #999;
+	font-size: 11px;
+	margin-bottom: 15px;
 }
 
 

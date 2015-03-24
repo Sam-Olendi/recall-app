@@ -43,9 +43,9 @@ My Books
 				<th> {{ $book->id }} </th>
 				<th> <img src="{{ $book->book_cover }}"> </th>
 				<th> {{ $book->book_title }} </th>
-				<th> {{ $book->author }} </th>
+				<th class="table-description"> {{ $book->author }} </th>
 				<th class="table-description"> {{ $book->publisher }} </th>
-				<th> {{ $book->book_link }} </th>
+				<th class="table-description"> {{ $book->book_link }} </th>
 				<th class="table-tools">
 					<a href="/books/{{$book->id}}/edit" class="btn btn-hover-tools btn-default left"> Edit</a>
 					{{ Form::open(['route' => ['books.destroy', $book->id], 'method' => 'delete']) }}

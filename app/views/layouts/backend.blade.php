@@ -95,5 +95,13 @@
 
         <script src="{{ asset('assets/js/main.js') }}"></script>
 
+        <script>
+            var container = document.querySelector('#container-fluid');
+            var msnry = new Masonry(container, {
+                columnWidth: 200,
+                itemSelector: '.item'
+            });
+        </script>
+
     </body>
 </html>

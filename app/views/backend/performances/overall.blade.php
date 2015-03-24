@@ -2,7 +2,7 @@
 
 @section('heading')
 	<a href="/teacher/dashboard"><span class="glyphicon glyphicon-chevron-left back-icon"></span></a>
-	Learner Performance Reports
+	Overall Performance Reports
 @stop
 
 @section('content')
@@ -47,31 +47,35 @@
 @endif --}}
 
 <h4>Overall Student Performance</h4>
-	<div>
-		<div>
-			<h5 class="perf-box-heading">Best performing learner</h5>
-			<div class="perf-box-scores">
+<div class="row">
+	<div class="col-md-6">
+	<h5 class="report-block-title">Learner Performance</h5>
+	<p class="report-block-subtitle">These are your best and least performing learners</p>
+		<div class="performance-box-alt left">
+			<h5 class="perf-box-heading">Top learner</h5>
+			<div class="perf-box-scores perf-box-scores-alt">
 				@foreach($best_student as $learner_id => $percentage)
 				<?php $user = User::find($learner_id) ?>
-					{{ $user->first_name }} {{ $user->last_name }} 
-					{{ $percentage }}
+					<h4 class="perf-box-name">{{ $user->first_name }} {{ $user->last_name }} </h4>
+					<h2 class="perf-box-score">{{ $percentage }}%</h2>
 				@endforeach
 			</div>
 		</div>
 
-		<div>
+		<div class="performance-box-alt left">
 			<h5 class="perf-box-heading">Least performing learner</h5>
-			<div class="perf-box-scores">
+			<div class="perf-box-scores perf-box-scores-alt">
 				@foreach($worst_student as $learner_id => $percentage)
 				<?php $user = User::find($learner_id) ?>
-					{{ $user->first_name }} {{ $user->last_name }} 
-					{{ $percentage }}
+					<h4 class="perf-box-name">{{ $user->first_name }} {{ $user->last_name }} </h4>
+					<h2 class="perf-box-score">{{ $percentage }}%</h2>
 				@endforeach
 			</div>		
 		</div>
 	</div>
-	<div>
-		<h5>Top 5 Learners</h5>
+	<div class="col-md-6">
+		<h5 class="report-block-title">Learner Rankings</h5>
+		<p class="report-block-subtitle">This is a ranking of your learners. You can view more details by clicking the button at the bottom of the table.</p>
 		<table class="table table-striped table-hover table-row-link">
 			<thead>
 				<tr>
@@ -89,66 +93,86 @@
 				@endforeach
 			</tbody>
 		</table>
+		<a href="#" class="btn btn-go right btn-hover-tools">View learner rankings</a>
 	</div>
-	<div>
-		<h5 class="perf-box-heading">Best performing exercise</h5>
-		<div class="perf-box-scores">
-			@foreach($best_exercise as $exercise_id => $percentage)
-			<?php $exercise = Exercise::find($exercise_id) ?>
-				{{ $exercise->exercise_name }} 
-				{{ $percentage }}
-			@endforeach
-		</div>	
-	</div>
-	<div>
-		<h5 class="perf-box-heading">Least performing exercise</h5>
-		<div class="perf-box-scores">
-			@foreach($worst_exercise as $exercise_id => $percentage)
-			<?php $exercise = Exercise::find($exercise_id) ?>
-				{{ $exercise->exercise_name }} 
-				{{ $percentage }}
-			@endforeach
-		</div>	
-	</div>
+</div>
+{{-- End of row --}}
 
 <hr>
 
 <h4>Subject performance comparisons</h4>
-	@foreach($best_score as $key => $best_score)
-		<div class="">
-			<?php $subject = Subject::find($key) ?>
-			<h5 class="perf-box-heading">{{ $subject->subject_name }}</h5>
-			<div class="perf-box-scores">
-				<h4 class="perf-box-title">{{ $best_score }}%</h4>
+<div class="row">
+	<div class="col-md-6">
+		<h5 class="report-block-title">Best and least performing subjects</h5>
+		<p class="report-block-subtitle">The following subjects have the best and worst overall performances respectively. The figures below are the total percentages scored by your learners collectively in all their exercises.</p>
+		@foreach($best_score as $key => $best_score)
+			<div class="performance-box-alt left">
+				<?php $subject = Subject::find($key) ?>
+				<h5 class="perf-box-heading">Best performing subject</h5>
+				<div class="perf-box-scores">
+					<h4 class="perf-box-name">{{ $subject->subject_name }}</h4>
+					<h4 class="perf-box-score">{{ $best_score }}%</h4>
+				</div>
 			</div>
-		</div>
-	@endforeach
+		@endforeach
 
-	@foreach($worst_score as $key => $worst_score)
-		<div class="">
-		<?php $subject = Subject::find($key) ?>
-		<h5 class="perf-box-heading">{{ $subject->subject_name }}</h5>
-			<div class="perf-box-scores">
-				<h4 class="perf-box-title">{{ $worst_score }}%</h4>
+		@foreach($worst_score as $key => $worst_score)
+			<div class="performance-box-alt left">
+			<?php $subject = Subject::find($key) ?>
+			<h5 class="perf-box-heading">Worst performing subject</h5>
+				<div class="perf-box-scores">
+					<h4 class="perf-box-name">{{ $subject->subject_name }}</h4>
+					<h4 class="perf-box-score">{{ $worst_score }}%</h4>
+				</div>
 			</div>
+		@endforeach
+	</div>
+
+	<div class="col-md-6">
+		<h5 class="report-block-title">Best and least performing exercises</h5>
+		<p class="report-block-subtitle">Below are the exercises with the overall best and worst learner performances. The figures shown are the total percentages scored by your learners collectively in both the exercises.</p>
+		<div class="performance-box-alt left">
+			<h5 class="perf-box-heading">Best performing exercise</h5>
+			<div class="perf-box-scores">
+				@foreach($best_exercise as $exercise_id => $percentage)
+				<?php $exercise = Exercise::find($exercise_id) ?>
+					<h4 class="perf-box-name">{{ $exercise->exercise_name }} </h4>
+					<h4 class="perf-box-score">{{ $percentage }}%</h4>
+				@endforeach
+			</div>	
 		</div>
-	@endforeach
+		<div class="performance-box-alt left">
+			<h5 class="perf-box-heading">Least performing exercise</h5>
+			<div class="perf-box-scores">
+				@foreach($worst_exercise as $exercise_id => $percentage)
+				<?php $exercise = Exercise::find($exercise_id) ?>
+					<h4 class="perf-box-name">{{ $exercise->exercise_name }}</h4>
+					<h4 class="perf-box-score">{{ $percentage }}%</h4>
+				@endforeach
+			</div>	
+		</div>
+	</div>
+	
+</div>
+{{-- Enf of row --}}
 
 <hr>
-	
-<h4>Performance per Subject</h4>
 
+<h4>Performance per Subject</h4>
+<p class="report-block-subtitle">This list shows the performance per subject of your learners</p>
+
+<div class="js-masonry" data-masonry-options='{ "columnWidth": 30, "itemSelector": ".perf-box-item" }'>
 @foreach($performance as $performance)
-	<div class="">
+	<div class="perf-box-item">
 		<?php $subject = Subject::find($performance->subject_id) ?>
 		<h5 class="perf-box-heading">{{ $subject->subject_name }}</h5>
 		<div class="perf-box-scores">
-			{{ round(($performance->scores/$performance->totals)*100, 2) }}%
+			<h4 class="perf-box-score">{{ round(($performance->scores/$performance->totals)*100, 2) }}%</h4>
 		</div>
 	</div>
 @endforeach
-
 </div>
+
 
 {{-- <table class="table table-striped table-hover table-row-link">
 	<thead>

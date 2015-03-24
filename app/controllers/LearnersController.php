@@ -82,7 +82,7 @@ class LearnersController extends \BaseController {
 
 		# redirect to login
 		return Redirect::to('/learner/login')
-				->with('success', 'Your account has been created! You can now log in');
+				->with('success_message', 'Your account has been created! You can now log in');
 
 
 	}

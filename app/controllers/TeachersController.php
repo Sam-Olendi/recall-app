@@ -58,7 +58,7 @@ class TeachersController extends \BaseController {
 
 		# redirect to login
 		return Redirect::to('/teacher/login')
-				->with('success', 'Your account has been created! You can now log in');
+				->with('success_message', 'Your account has been created! You can now log in');
 	}
 
 

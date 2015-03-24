@@ -1,11 +1,12 @@
 @extends('layouts.backend')
 
 @section('heading')
-Learner Performance Reports
+Welcome to the Recall Teacher Dashboard
 @stop
 
 @section('content')
 
+<h4>View performance reports:</h4>
 <div>
 	<btn class="report-btn">
 		<div class="rbn-icon left">
@@ -18,18 +19,6 @@ Learner Performance Reports
 			</a>
 		</div>
 	</btn>
-
-	{{-- <btn class="report-btn">
-		<div class="rbn-icon left">
-			<span class="fa fa-pencil"></span>
-		</div>
-		<div class="rbn-text">
-			<a href="/teacher/performance/yes/">
-				<h5>Performance per subject</h5>
-				<p>Click here to view performance according to subject</p>
-			</a>
-		</div>
-	</btn> --}}
 
 	<br>
 
@@ -44,9 +33,38 @@ Learner Performance Reports
 			</a>
 		</div>
 	</btn>
-
 </div>
 
 <hr>
 
+
+
+<h4>You can also perform the following actions:</h4>
+<div>
+	<btn class="report-btn">
+		<div class="rbn-icon left">
+			<span class="fa fa-pencil"></span>
+		</div>
+		<div class="rbn-text">
+			<a href="/subjects/create">
+				<h5>Add new subject</h5>
+				<p>Click here to add a new subject</p>
+			</a>
+		</div>
+	</btn>
+
+	<br>
+
+	<btn class="report-btn">
+		<div class="rbn-icon left">
+			<span class="fa fa-pencil"></span>
+		</div>
+		<div class="rbn-text">
+			<a href="/books/create">
+				<h5>Add new book</h5>
+				<p>Click here to add a new book</p>
+			</a>
+		</div>
+	</btn>
+</div>
 @stop

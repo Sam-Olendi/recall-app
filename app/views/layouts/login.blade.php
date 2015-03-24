@@ -30,8 +30,16 @@
                 @yield('alerts')
                 <p class="subtitle">Simplifying the learning process</p>
 
-                @if(Session::has('success'))
-                    <p> {{ Session::get('sucess') }} </p>
+                @if(Session::has('flash_message'))
+                    <div class="flash-message">
+                        <p> {{ Session::get('flash_message') }} </p>
+                    </div>
+                @endif
+
+                @if(Session::has('success_message'))
+                    <div class="success-message">
+                        <p> {{ Session::get('success_message') }} </p>
+                    </div>
                 @endif
 
                 <div class="login-box">

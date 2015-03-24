@@ -26,8 +26,13 @@
     <div class="jumbotron">
       <div class="container">
         <div class="home-intro">
-          <h1>Recall</h1>
-          <p>Simplifying the learning process</p>
+            <h1>Recall</h1>
+            <p>Simplifying the learning process</p>
+            @if(Session::has('flash_message'))
+                <div class="flash-message">
+                    <p> {{ Session::get('flash_message') }} </p>
+                </div>
+            @endif
           <div class="btn-group">
             <a href="/learner/login" class="btn-user"><i class="fa fa-pencil"></i> <br> Learner</a>
             <a href="/teacher/login" class="btn-user"><i class="fa fa-graduation-cap"></i> <br> Teacher</a>

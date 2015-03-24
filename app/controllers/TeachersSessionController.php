@@ -38,7 +38,8 @@ class TeachersSessionController extends \BaseController {
 		$user = $user['role'];
 
 		if ( $user != 'teacher' ) {
-			return Redirect::to('/');
+			return Redirect::to('/')
+					->with('flash_message', 'You do not have permission to view the page you requested. Please log in as a learner');
 		}
 
 		$attempt = Auth::attempt(['email' => Input::get('email'), 'password' => Input::get('password')]);
@@ -47,7 +48,7 @@ class TeachersSessionController extends \BaseController {
 			return Redirect::intended('/teacher/dashboard');
 		}
 
-		return Redirect::back()->withInput()->with('error', 'Something went wrong. Please try again');
+		return Redirect::back()->withInput()->with('flash_message', 'You have entered incorrect credentials. Please try again');
 	}
 
 

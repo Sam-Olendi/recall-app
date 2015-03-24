@@ -33,7 +33,7 @@ class LearnersSessionController extends \BaseController {
 			return Redirect::intended('/learner/classroom');
 		}
 
-		return Redirect::back()->withInput()->with('error', 'Something went wrong. Please try again');
+		return Redirect::back()->withInput()->with('flash_message', 'You have entered incorrect credentials. Please try again');
 	}
 
 

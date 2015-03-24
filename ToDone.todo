@@ -35,10 +35,12 @@ Leftover Todos
 + Position search bar in correct, consistent place
 + Make teacher subscribe to a student (such that a student belongs to a teacher)
 + Add more reports
------ Create flash messages
------ Make system informative
------ Improve the design of reports
----- Fix graph error: - Convert object to list item
++ Improve the design of reports
++ Create flash messages
++ Make system informative
++ Create a more appropriate dashboard
+----- Fix graph error: - Convert object to list item
+----- Show learner only subjects that belong to their teachers
 ---- Implement export reports to PDF and/or Excel
 
 Bugs
@@ -59,7 +61,7 @@ Additional features (very low priority)
 - Find a way to add an animated scroll or stack slides to the questions
 
 Thakur Feedback
-- Make system informative
++ Make system informative
 + Make questions logical
 + Make topics simple and easy to understand
 

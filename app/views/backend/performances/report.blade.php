@@ -1,34 +1,33 @@
 @extends('layouts.backend')
 
 @section('heading')
-Student Performance: 
+Learner Performance: {{ $subject->subject_name }}
 @stop
 
 @section('content')
-	
-	<div>
-		<h4>Subject: {{ $subject->subject_name }}</h4>
-	</div>
 
 	<div class="row">
 		<div class="col-md-8">
+			<h5 class="report-block-title">Score Graph</h5>
+			<p class="report-block-subtitle">These are the learner's scores in recently performed exercises.</p>
 			<canvas id="report-graph" width="600" height="300">
 				
 			</canvas>
 		</div>
 		<div class="col-md-4">
-			<h4>Recent Exercise Scores<hr></h4>
+			<h5 class="report-block-title">Recent Exercise Scores</h5>
+			<p class="report-block-subtitle">These are the learner's scores in recently performed exercises.</p>
 			<table class="table table-striped table-hover table-row-link">
 				<thead>
 					<tr>
 						<th>Exercise</th>
-						<th>Score (in percentage)</th>
+						<th>Score (Percentage)</th>
 					</tr>
 				</thead>
 				<tbody>
 					@foreach($scores as $score)
 					<tr>
-						<th> {{ $score->exercise->exercise_name }} </th>
+						<th> <b>{{ $score->exercise->exercise_name }}</b> </th>
 						<th> {{ round(($score->user_score/$score->total_questions)*100, 2) }}% </th>
 					</tr>
 					@endforeach
@@ -39,8 +38,11 @@ Student Performance:
 
 	<hr>
 
+
 	<div class="row">
 		<div class="col-md-4">
+			<h5 class="report-block-title">Overall performance in {{ $subject->subject_name}}</h5>
+			<p class="report-block-subtitle">This is calculated from all the exercises that the learner has performed.</p>
 			<div class="performance-box">
 				<h5 class="perf-box-heading">Percentage performance in {{ $subject->subject_name }}</h5>
 				<div class="perf-box-scores">
@@ -51,6 +53,8 @@ Student Performance:
 			</div>
 		</div>
 		<div class="col-md-4">
+			<h5 class="report-block-title">Best performance in {{ $subject->subject_name}}</h5>
+			<p class="report-block-subtitle">This is the learner's best performance in an exercise in {{ $subject->subject_name}}.</p>
 			<div class="performance-box">
 				<h5 class="perf-box-heading">Highest score in {{ $subject->subject_name }}</h5>
 				<div class="perf-box-scores">
@@ -60,6 +64,8 @@ Student Performance:
 			</div>
 		</div>
 		<div class="col-md-4">
+			<h5 class="report-block-title">Poorest performance in {{ $subject->subject_name}}</h5>
+			<p class="report-block-subtitle">This is the learner's poorest performance in an exercise in {{ $subject->subject_name}}.</p>
 			<div class="performance-box">
 				<h5 class="perf-box-heading">Lowest score in {{ $subject->subject_name }}</h5>
 				<div class="perf-box-scores">
@@ -74,12 +80,13 @@ Student Performance:
 
 	<div>
 		
-	<h4>General Exercise Performance <hr></h4>
+	<h5 class="report-block-title">General Exercise Performance</h5>
+	<p class="report-block-subtitle">This is a list of the overall {{ $subject->subject_name}} exercises performance of the learner.</p>
+
 
 		<table class="table table-striped table-hover table-row-link">
 			<thead>
 				<tr>
-					<th>#</th>
 					<th>Exercise</th>
 					<th>Learner's Score</th>
 					<th>Out Of</th>
@@ -89,11 +96,10 @@ Student Performance:
 			<tbody>
 				@foreach($scores as $score)
 					<tr>
-						<th></th>
-						<th> {{ $score->exercise->exercise_name }} </th>
+						<th> <b>{{ $score->exercise->exercise_name }}</b> </th>
 						<th> {{ $score->user_score }} </th>
 						<th> {{ $score->total_questions }} </th>
-						<th> {{ round(($score->user_score/$score->total_questions)*100, 2) }}% </th>
+						<th> <b>{{ round(($score->user_score/$score->total_questions)*100, 2) }}%</b> </th>
 					</tr>
 				@endforeach
 			</tbody>

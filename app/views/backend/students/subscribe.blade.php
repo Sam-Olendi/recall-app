@@ -1,6 +1,7 @@
 @extends('layouts.backend')
 
 @section('heading')
+	<a href="/teacher/performance/learners/"><span class="glyphicon glyphicon-chevron-left back-icon"></span></a>
 	Follow Learner
 @stop
 
