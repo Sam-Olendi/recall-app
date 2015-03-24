@@ -18,7 +18,9 @@ class CreateExercisesTable extends Migration {
 			$table->string('exercise_name');
 			$table->string('exercise_description');
 			$table->integer('subject_id')->unsigned();
-			$table->foreign('subject_id')->references('id')->on('subjects');
+			$table->foreign('subject_id')->references('id')->on('subjects')->onDelete('cascade');
+			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

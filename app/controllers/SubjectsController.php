@@ -9,7 +9,7 @@ class SubjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$subjects = Subject::paginate(5);
+		$subjects = Subject::where('user_id', '=', Auth::user()->id)->paginate(5);
 		$query = Request::get('q');
 
 		if ($query) {
@@ -48,6 +48,7 @@ class SubjectsController extends \BaseController {
 		$subject = new Subject;
 		$subject->subject_name = Input::get('subject_name');
 		$subject->subject_description = Input::get('subject_description');
+		$subject->user_id = Auth::user()->id;
 
 		// $image = Input::file('subject_icon');
 
@@ -119,6 +120,7 @@ class SubjectsController extends \BaseController {
 		$subject = Subject::find($id);
 		$subject->subject_name = Input::get('subject_name');
 		$subject->subject_description = Input::get('subject_description');
+		$subject->user_id = Auth::user()->id;
 
 		// $image = Input::file('subject_icon');
 

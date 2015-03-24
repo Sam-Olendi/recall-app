@@ -52,7 +52,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="/teacher/dashboard"><span class="glyphicon glyphicon-tasks icon"></span><br> Learner <br> Performance</a>
+                            <a href="/teacher/dashboard"><span class="glyphicon glyphicon-tasks icon"></span><br> Performance <br> Reports</a>
                         </li>
                         <li>
                             <a href="/teacher/mysubjects"><span class="glyphicon glyphicon-bookmark icon"></span><br> My Subjects</a>
@@ -63,9 +63,9 @@
                         <li>
                             <a href="/teacher/mybooks"><span class="glyphicon glyphicon-book icon"></span><br> Books</a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="/teacher/mystudents"><span class="glyphicon glyphicon-book icon"></span><br> Learner <br> Accounts</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <!--/Sidebar Menu-->

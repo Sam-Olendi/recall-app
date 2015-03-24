@@ -9,8 +9,10 @@ class StudentsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$role =  Role::find(2);
-		$users = $role->users;
+		// $role =  Role::find(2);
+		// $users = $role->users;
+
+		$users = Subscription::where('teacher_id', '=', Auth::user()->id)->get();
 
 		return View::make('backend.students.index')
 					->with('users', $users);

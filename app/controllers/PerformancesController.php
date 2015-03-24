@@ -2,12 +2,43 @@
 
 class PerformancesController extends \BaseController {
 
+	
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
 	public function index()
+	{
+		return View::make('backend.performances.index');
+	}
+
+	public function showLearners()
+	{
+		$teacher_id = Auth::user()->id;
+		$learners = Subscription::where('teacher_id', '=', $teacher_id)->get();
+		$query = Request::get('q');
+
+		if ($query) {
+			$users = User::where('first_name', 'LIKE', "%$query%")
+								->orWhere('last_name', 'LIKE', "%$query%")
+								->get();			
+		} else {
+			$users = null;
+		}
+
+
+		return View::make('backend.performances.learners')
+						->with('users', $users)
+						->with('learners', $learners);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function overall()
 	{
 		// $scores = Score::distinct()->groupBy('user_id')->get();
 		$teacher_id = Auth::user()->id;
@@ -40,24 +71,86 @@ class PerformancesController extends \BaseController {
 			$score_per_subject[$subject_score->subject_id] = round(($subject_score->scores/$subject_score->totals)*100, 2);
 		}
 
+		// Best performing subject
 		arsort($score_per_subject);
-		// return $score_per_subject;
-
 		$best_score = array_slice($score_per_subject, 0, 1, true);
-		// $best_subject = $best_subject[0];
 
+		// Worst performing subject
 		asort($score_per_subject);
-
 		$worst_score = array_slice($score_per_subject, 0, 1, true);
 
 
-		return View::make('backend.performances.index')
+		# Performance per learner
+		// Get scores and group by user id
+		$learner_performance = DB::table('scores')
+									->select(DB::raw('user_id, round((user_score/total_questions)*100, 2) as percentage'))
+									->groupBy('user_id')
+									->get();
+
+		$score_per_user = [];
+
+		# Best and poorest performing student
+		foreach ($learner_performance as $key => $value) {
+			$score_per_user[$value->user_id] = $value->percentage;
+		}
+
+		// Best performing student
+		arsort($score_per_user);
+		$best_student = array_slice($score_per_user, 0, 1, true);
+
+		// Poorest performing student
+		asort($score_per_user);
+		$worst_student = array_slice($score_per_user, 0, 1, true);
+
+		# Top 5 learners
+		arsort($score_per_user);
+		$top_five_students = array_slice($score_per_user, 0, 5, true);
+
+
+		# Best and worst performing exercises
+		// Get exercise scores and group by exercise id
+		$exercise_performance = DB::table('scores')
+							->select(DB::raw('exercise_id, round((user_score/total_questions)*100, 2) as percentage'))
+							->groupBy('exercise_id')
+							->get();
+
+		$score_per_exercise = [];
+
+		foreach ($exercise_performance as $key => $value) {
+			$score_per_exercise[$value->exercise_id] = $value->percentage;
+		}
+
+		// Best performing exercise
+		arsort($score_per_exercise);
+		$best_exercise = array_slice($score_per_exercise, 0, 1, true);
+
+		// Worst performing exercise
+		asort($score_per_exercise);
+		$worst_exercise = array_slice($score_per_exercise, 0, 1, true);
+
+
+		return View::make('backend.performances.overall')
 				// ->with('scores', $scores)
 				->with('users', $users)
 				->with('learners', $learners)
 				->with('performance', $subject_performance)
 				->with('best_score', $best_score)
-				->with('worst_score', $worst_score);
+				->with('worst_score', $worst_score)
+				->with('best_student', $best_student)
+				->with('worst_student', $worst_student)
+				->with('top_five_students', $top_five_students)
+				->with('best_exercise', $best_exercise)
+				->with('worst_exercise', $worst_exercise);
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function getSubjects()
+	{
+		return View::make('backend.performance.subjects');
 	}
 
 
@@ -105,9 +198,6 @@ class PerformancesController extends \BaseController {
 					->groupBy('subject_id')
 					->get();
 
-		// dd(array_get($subject_scores, '0'));
-
-
 		# Best performing subject
 		$score_per_subject = [];
 
@@ -118,15 +208,12 @@ class PerformancesController extends \BaseController {
 
 
 		arsort($score_per_subject);
-		// return $score_per_subject;
 
 		$best_subject = array_slice($score_per_subject, 0, 1, true);
-		// $best_subject = $best_subject[0];
 
 		asort($score_per_subject);
 
 		$worst_subject = array_slice($score_per_subject, 0, 1, true);
-		// $worst_subject = $worst_subject[0];
 
 		return View::make('backend.performances.show')
 					->with('user', User::find($user_id))
@@ -171,6 +258,13 @@ class PerformancesController extends \BaseController {
 		$dates = Score::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->get(['created_at']);
+		$dates = $dates->lists('created_at');
+
+		$graph_dates = [];
+
+		foreach ($dates as $date) {
+			$graph_dates[] = $date;
+		}
 
 	
 		# Highest and lowest scores in said subject respectively
@@ -238,7 +332,8 @@ class PerformancesController extends \BaseController {
 					->with('low_score', $low_score)
 					->with('low_exercise', $low_exercise)
 					->with('recent_score', $recent_score)
-					->with('dates', $scores_all->lists('created_at'))
+					// ->with('dates', $scores_all->lists('created_at'))
+					->with('dates', $graph_dates)
 					// ->with('dates', $dates)
 					->with('scores_all', $scores_all->lists('user_score'))
 					->with('questions', $scores_all->lists('total_questions'));

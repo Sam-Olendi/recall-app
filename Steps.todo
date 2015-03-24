@@ -1,14 +1,22 @@
 Reports
 	`General reports`
--- Overall student performance
++ Overall student performance
 + Performance per subject
 + Best performing subject
 + Worst performing subject
-- Best performing student
-- Worst performing student
-- Most improved student
-- Best performing exercise
-- Worst performing exercise
++ Best performing student (overall)
++ Worst performing student (overall)
++ Best performing exercise
++ Worst performing exercise
+- List of all students as per ranking
+
+
+	`Per subject`
+- Best performer in subject: Find scores that belong to said subject, group by user id, and sort through the list
+- Worst performer in subject: Read above note
+- Percentage performance in subject: Find all scores that belong to said subject, group by subject and sort through the list
+- Rank of subject (out of): Get subject's 'key' in the array
+
 
 	`Individual reports`
 + Best performing subject

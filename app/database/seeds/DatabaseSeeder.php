@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('RoleUserTableSeeder');
 		$this->call('HighscoresTableSeeder');
 		$this->call('LowscoresTableSeeder');
-		// $this->call('PerformancesTableSeeder');
+		$this->call('SubscriptionsTableSeeder');
 
 	}
 

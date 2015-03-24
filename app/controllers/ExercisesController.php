@@ -9,7 +9,7 @@ class ExercisesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$exercises = Exercise::paginate(5);
+		$exercises = Exercise::where('user_id', '=', Auth::user()->id)->paginate(5);
 		$query = Request::get('q');
 
 		if ($query) {
@@ -50,6 +50,7 @@ class ExercisesController extends \BaseController {
 		$exercise->exercise_name = Input::get('exercise_name');
 		$exercise->exercise_description = Input::get('exercise_description');
 		$exercise->subject_id = $subject_id;
+		$exercise->user_id = Auth::user()->id;
 
 		// $image = Input::file('exercise_icon');
 
@@ -119,6 +120,7 @@ class ExercisesController extends \BaseController {
 		$exercise->exercise_name = Input::get('exercise_name');
 		$exercise->exercise_description = Input::get('exercise_description');
 		$exercise->subject_id = $subject_id;
+		$exercise->user_id = Auth::user()->id;
 
 		// $image = Input::file('exercise_icon');
 

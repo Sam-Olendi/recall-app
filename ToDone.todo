@@ -34,8 +34,10 @@ Leftover Todos
 + Pagination
 + Position search bar in correct, consistent place
 + Make teacher subscribe to a student (such that a student belongs to a teacher)
++ Add more reports
 ----- Create flash messages
----- Add more reports
+----- Make system informative
+----- Improve the design of reports
 ---- Fix graph error: - Convert object to list item
 ---- Implement export reports to PDF and/or Excel
 

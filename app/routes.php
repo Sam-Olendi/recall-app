@@ -76,7 +76,6 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::get('/mysubjects', 'SubjectsController@index');
 	Route::get('/myexercises', 'ExercisesController@index');
 	Route::get('/dashboard', 'PerformancesController@index');
-	Route::get('/dashboard/{learner}', 'PerformancesController@show');
 	Route::post('/dashboard/{learner}/report', 'PerformancesController@report');
 	Route::get('/profile', 'TeachersController@index');
 	Route::get('/mystudents', 'StudentsController@index');
@@ -86,6 +85,11 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::put('/mystudents/{student}', 'StudentsController@update');
 	Route::get('/learner/subscribe', 'StudentsController@subscribe');
 	Route::get('/learner/subscribe/{learner}', 'StudentsController@storeSubscription');
+
+	Route::get('/performance', 'PerformancesController@overall');
+	Route::get('/performance/learners/', 'PerformancesController@showLearners');
+	Route::get('/performance/{learner}', 'PerformancesController@show');
+	Route::get('/performance/yes/', 'PerformancesController@getSubjects');
 
 
 });
