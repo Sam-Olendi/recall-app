@@ -39,9 +39,14 @@ Leftover Todos
 + Create flash messages
 + Make system informative
 + Create a more appropriate dashboard
++ Show learner only subjects that belong to their teachers
++ Implement export reports to PDF and/or Excel
++ Add score count to percentage performance
++ Add high score with score count
++ Add low score with score count
++ Add most performed exercise
++ Add most performed subject
 ----- Fix graph error: - Convert object to list item
------ Show learner only subjects that belong to their teachers
----- Implement export reports to PDF and/or Excel
 
 Bugs
 + On edit, images do not upload
@@ -58,7 +63,6 @@ Additional features (very low priority)
 + Animate icons as SVGs
 + Animate the score icons with css (use svg)
 -- Create sort by
-- Find a way to add an animated scroll or stack slides to the questions
 
 Thakur Feedback
 + Make system informative

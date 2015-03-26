@@ -252,5 +252,376 @@ class ScoresTableSeeder extends Seeder {
 			'total_questions'	=> 8,
 			'user_score'		=> 4
 		]);
+
+
+
+		# Angela
+
+		// EXERCISE 1
+		Score::create([
+			'exercise_id'		=> 1,
+			'subject_id'		=> 1,
+			'user_id'			=> 4,
+			'total_questions'	=> 10,
+			'user_score'		=> 10
+		]);
+
+		Score::create([
+			'exercise_id'		=> 1,
+			'subject_id'		=> 1,
+			'user_id'			=> 4,
+			'total_questions'	=> 10,
+			'user_score'		=> 6
+		]);
+
+		// EXERCISE 2
+		Score::create([
+			'exercise_id'		=> 2,
+			'subject_id'		=> 1,
+			'user_id'			=> 4,
+			'total_questions'	=> 6,
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 2,
+			'subject_id'		=> 1,
+			'user_id'			=> 4,
+			'total_questions'	=> 6,
+			'user_score'		=> 1
+		]);
+
+		// EXERCISE 3
+		Score::create([
+			'exercise_id'		=> 3,
+			'subject_id'		=> 2,
+			'user_id'			=> 4,
+			'total_questions'	=> 5,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 3,
+			'subject_id'		=> 2,
+			'user_id'			=> 4,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		// EXERCISE 4
+		Score::create([
+			'exercise_id'		=> 4,
+			'subject_id'		=> 2,
+			'user_id'			=> 4,
+			'total_questions'	=> 6,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 4,
+			'subject_id'		=> 2,
+			'user_id'			=> 4,
+			'total_questions'	=> 6,
+			'user_score'		=> 3
+		]);
+
+		// EXERCISE 5
+		Score::create([
+			'exercise_id'		=> 5,
+			'subject_id'		=> 3,
+			'user_id'			=> 4,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 5,
+			'subject_id'		=> 3,
+			'user_id'			=> 4,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		// EXERCISE 6
+		Score::create([
+			'exercise_id'		=> 6,
+			'subject_id'		=> 3,
+			'user_id'			=> 4,
+			'total_questions'	=> 5,
+			'user_score'		=> 3
+		]);
+
+		Score::create([
+			'exercise_id'		=> 6,
+			'subject_id'		=> 3,
+			'user_id'			=> 4,
+			'total_questions'	=> 5,
+			'user_score'		=> 2
+		]);
+
+		// EXERCISE 7
+		Score::create([
+			'exercise_id'		=> 7,
+			'subject_id'		=> 3,
+			'user_id'			=> 4,
+			'total_questions'	=> 8,
+			'user_score'		=> 8
+		]);
+
+		Score::create([
+			'exercise_id'		=> 7,
+			'subject_id'		=> 3,
+			'user_id'			=> 4,
+			'total_questions'	=> 8,
+			'user_score'		=> 7
+		]);
+
+
+
+
+		# Wesley
+
+		// EXERCISE 1
+		Score::create([
+			'exercise_id'		=> 1,
+			'subject_id'		=> 1,
+			'user_id'			=> 5,
+			'total_questions'	=> 10,
+			'user_score'		=> 6
+		]);
+
+		Score::create([
+			'exercise_id'		=> 1,
+			'subject_id'		=> 1,
+			'user_id'			=> 5,
+			'total_questions'	=> 10,
+			'user_score'		=> 5
+		]);
+
+		// EXERCISE 2
+		Score::create([
+			'exercise_id'		=> 2,
+			'subject_id'		=> 1,
+			'user_id'			=> 5,
+			'total_questions'	=> 6,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 2,
+			'subject_id'		=> 1,
+			'user_id'			=> 5,
+			'total_questions'	=> 6,
+			'user_score'		=> 3
+		]);
+
+		// EXERCISE 3
+		Score::create([
+			'exercise_id'		=> 3,
+			'subject_id'		=> 2,
+			'user_id'			=> 5,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 3,
+			'subject_id'		=> 2,
+			'user_id'			=> 5,
+			'total_questions'	=> 5,
+			'user_score'		=> 2
+		]);
+
+		// EXERCISE 4
+		Score::create([
+			'exercise_id'		=> 4,
+			'subject_id'		=> 2,
+			'user_id'			=> 5,
+			'total_questions'	=> 6,
+			'user_score'		=> 6
+		]);
+
+		Score::create([
+			'exercise_id'		=> 4,
+			'subject_id'		=> 2,
+			'user_id'			=> 5,
+			'total_questions'	=> 6,
+			'user_score'		=> 4
+		]);
+
+		// EXERCISE 5
+		Score::create([
+			'exercise_id'		=> 5,
+			'subject_id'		=> 3,
+			'user_id'			=> 5,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 5,
+			'subject_id'		=> 3,
+			'user_id'			=> 5,
+			'total_questions'	=> 5,
+			'user_score'		=> 2
+		]);
+
+		// EXERCISE 6
+		Score::create([
+			'exercise_id'		=> 6,
+			'subject_id'		=> 3,
+			'user_id'			=> 5,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		Score::create([
+			'exercise_id'		=> 6,
+			'subject_id'		=> 3,
+			'user_id'			=> 5,
+			'total_questions'	=> 5,
+			'user_score'		=> 1
+		]);
+
+		// EXERCISE 7
+		Score::create([
+			'exercise_id'		=> 7,
+			'subject_id'		=> 3,
+			'user_id'			=> 5,
+			'total_questions'	=> 8,
+			'user_score'		=> 3
+		]);
+
+		Score::create([
+			'exercise_id'		=> 7,
+			'subject_id'		=> 3,
+			'user_id'			=> 5,
+			'total_questions'	=> 8,
+			'user_score'		=> 1
+		]);
+
+
+
+
+		# Raphael
+
+		// EXERCISE 1
+		Score::create([
+			'exercise_id'		=> 1,
+			'subject_id'		=> 1,
+			'user_id'			=> 6,
+			'total_questions'	=> 10,
+			'user_score'		=> 9
+		]);
+
+		Score::create([
+			'exercise_id'		=> 1,
+			'subject_id'		=> 1,
+			'user_id'			=> 6,
+			'total_questions'	=> 10,
+			'user_score'		=> 8
+		]);
+
+		// EXERCISE 2
+		Score::create([
+			'exercise_id'		=> 2,
+			'subject_id'		=> 1,
+			'user_id'			=> 6,
+			'total_questions'	=> 6,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 2,
+			'subject_id'		=> 1,
+			'user_id'			=> 6,
+			'total_questions'	=> 6,
+			'user_score'		=> 4
+		]);
+
+		// EXERCISE 3
+		Score::create([
+			'exercise_id'		=> 3,
+			'subject_id'		=> 2,
+			'user_id'			=> 6,
+			'total_questions'	=> 5,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 3,
+			'subject_id'		=> 2,
+			'user_id'			=> 6,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		// EXERCISE 4
+		Score::create([
+			'exercise_id'		=> 4,
+			'subject_id'		=> 2,
+			'user_id'			=> 6,
+			'total_questions'	=> 6,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 4,
+			'subject_id'		=> 2,
+			'user_id'			=> 6,
+			'total_questions'	=> 6,
+			'user_score'		=> 4
+		]);
+
+		// EXERCISE 5
+		Score::create([
+			'exercise_id'		=> 5,
+			'subject_id'		=> 3,
+			'user_id'			=> 6,
+			'total_questions'	=> 5,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 5,
+			'subject_id'		=> 3,
+			'user_id'			=> 6,
+			'total_questions'	=> 5,
+			'user_score'		=> 4
+		]);
+
+		// EXERCISE 6
+		Score::create([
+			'exercise_id'		=> 6,
+			'subject_id'		=> 3,
+			'user_id'			=> 6,
+			'total_questions'	=> 5,
+			'user_score'		=> 5
+		]);
+
+		Score::create([
+			'exercise_id'		=> 6,
+			'subject_id'		=> 3,
+			'user_id'			=> 6,
+			'total_questions'	=> 5,
+			'user_score'		=> 3
+		]);
+
+		// EXERCISE 7
+		Score::create([
+			'exercise_id'		=> 7,
+			'subject_id'		=> 3,
+			'user_id'			=> 6,
+			'total_questions'	=> 8,
+			'user_score'		=> 7
+		]);
+
+		Score::create([
+			'exercise_id'		=> 7,
+			'subject_id'		=> 3,
+			'user_id'			=> 6,
+			'total_questions'	=> 8,
+			'user_score'		=> 5
+		]);
 	}
 }

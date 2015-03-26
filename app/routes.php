@@ -75,6 +75,7 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::get('/mybooks', 'BooksController@index');
 	Route::get('/mysubjects', 'SubjectsController@index');
 	Route::get('/myexercises', 'ExercisesController@index');
+	Route::get('/mylearners', 'StudentsController@index');
 	Route::get('/dashboard', 'PerformancesController@index');
 	Route::post('/dashboard/{learner}/report', 'PerformancesController@report');
 	Route::get('/profile', 'TeachersController@index');
@@ -90,6 +91,10 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 	Route::get('/performance/learners/', 'PerformancesController@showLearners');
 	Route::get('/performance/{learner}', 'PerformancesController@show');
 	Route::get('/performance/yes/', 'PerformancesController@getSubjects');
+
+
+	Route::get('/performance/overall/export', 'ExportsController@overall');
+	Route::get('/performance/{learner}/report/export', 'ExportsController@report');
 
 
 });

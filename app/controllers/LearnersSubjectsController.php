@@ -9,6 +9,17 @@ class LearnersSubjectsController extends \BaseController {
 	 */
 	public function index()
 	{
+		// $learner_id = Auth::user()->id;
+		// $subscriptions = Subscription::where('learner_id', '=', $learner_id)->lists('teacher_id');
+		// $teacher_id[] = $subscriptions;
+		// $count = count($teacher_id);
+
+		// $subjects = [];
+
+		// for ($i=0; $i < $count; $i++) { 
+		// 	$subjects = Subject::where('user_id', '=', $teacher_id)->get();
+		// }
+
 		return View::make('frontend.subjects.index')
 			->with('subjects', Subject::all());
 	}

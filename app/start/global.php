@@ -79,6 +79,3 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
-
-
-$excel = App::make('excel');

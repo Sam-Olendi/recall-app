@@ -12,9 +12,9 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 
+        <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/admin.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
 
 
         <script src="{{ asset('assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
@@ -52,16 +52,19 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="/teacher/dashboard"><span class="glyphicon glyphicon-tasks icon"></span><br> Performance <br> Reports</a>
+                            <a href="/teacher/dashboard"><span class="fa fa-bar-chart icon"></span><br> Performance <br> Reports</a>
                         </li>
                         <li>
-                            <a href="/teacher/mysubjects"><span class="glyphicon glyphicon-bookmark icon"></span><br> My Subjects</a>
+                            <a href="/teacher/mysubjects"><span class="fa fa-bookmark icon"></span><br> My Subjects</a>
                         </li>
                         <li>
-                            <a href="/teacher/myexercises"><span class="glyphicon glyphicon-pencil icon"></span><br> My Exercises</a>
+                            <a href="/teacher/myexercises"><span class="fa fa-pencil icon"></span><br> My Exercises</a>
                         </li>
                         <li>
-                            <a href="/teacher/mybooks"><span class="glyphicon glyphicon-book icon"></span><br> Books</a>
+                            <a href="/teacher/mybooks"><span class="fa fa-book icon"></span><br> Books</a>
+                        </li>
+                        <li>
+                            <a href="/teacher/mylearners"><span class="fa fa-child icon"></span><br> My Learners</a>
                         </li>
                         {{-- <li>
                             <a href="/teacher/mystudents"><span class="glyphicon glyphicon-book icon"></span><br> Learner <br> Accounts</a>
@@ -89,19 +92,13 @@
      
  
         <script src=" {{ asset('assets/js/vendor/jquery-1.11.1.min.js') }} "></script>
+        <script src=" {{ asset('assets/js/vendor/highcharts.js') }} "></script>
         <script>window.jQuery || document.write('<script src="{{ asset('assets/js/vendor/jquery-1.11.1.min.js') }}"><\/script>')</script>
 
         <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
 
         <script src="{{ asset('assets/js/main.js') }}"></script>
 
-        <script>
-            var container = document.querySelector('#container-fluid');
-            var msnry = new Masonry(container, {
-                columnWidth: 200,
-                itemSelector: '.item'
-            });
-        </script>
 
     </body>
 </html>

@@ -6,6 +6,10 @@
 @stop
 
 @section('content')
+<a href="/teacher/performance/{{$user->id}}/report/export" class="btn btn-go btn-top right" target="_blank">
+	Export to PDF
+</a>
+
 	<div>
 		<h4 class="report-block-title">Please select a subject to view:</h4>
 		<p class="report-block-subtitle">Below is a list of your subjects. <br> Please select one subject to view a report for {{ $user->first_name}}'s performance in the subject:</p>

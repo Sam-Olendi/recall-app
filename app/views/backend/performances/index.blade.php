@@ -8,23 +8,25 @@ Welcome to the Recall Teacher Dashboard
 
 <h4>View performance reports:</h4>
 <div>
+	@if($count >= 1)
 	<btn class="report-btn">
 		<div class="rbn-icon left">
-			<span class="fa fa-pencil"></span>
+			<span class="fa fa-list"></span>
 		</div>
 		<div class="rbn-text">
 			<a href="/teacher/performance">
-				<h5>Overall student performance</h5>
+				<h5>Overall learner performance</h5>
 				<p>Click here to view the general learner performance</p>
 			</a>
 		</div>
 	</btn>
+	@endif
 
 	<br>
 
 	<btn class="report-btn">
 		<div class="rbn-icon left">
-			<span class="fa fa-pencil"></span>
+			<span class="fa fa-mortar-board"></span>
 		</div>
 		<div class="rbn-text">
 			<a href="/teacher/performance/learners/">
@@ -43,7 +45,7 @@ Welcome to the Recall Teacher Dashboard
 <div>
 	<btn class="report-btn">
 		<div class="rbn-icon left">
-			<span class="fa fa-pencil"></span>
+			<span class="fa fa-bookmark"></span>
 		</div>
 		<div class="rbn-text">
 			<a href="/subjects/create">
@@ -57,7 +59,7 @@ Welcome to the Recall Teacher Dashboard
 
 	<btn class="report-btn">
 		<div class="rbn-icon left">
-			<span class="fa fa-pencil"></span>
+			<span class="fa fa-book"></span>
 		</div>
 		<div class="rbn-text">
 			<a href="/books/create">

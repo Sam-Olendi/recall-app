@@ -34,10 +34,10 @@ Students
 			<tr>
 				<th> {{ $user->id }} </th>
 				<th>  </th>
-				<th> {{ $user->first_name}} {{$user->last_name }} </th>
+				<th> {{ $user->user->first_name}} {{$user->user->last_name }} </th>
 				<th>
-					<a href="/teacher/mystudents/{{$user->id}}/edit" class="btn btn-default btn-hover-tools left">Edit learner's account</a>
-					{{ Form::open(['url' => '/learners/'.$user->id, 'method' => 'delete']) }}
+					<a href="/teacher/mystudents/{{$user->user->id}}/edit" class="btn btn-default btn-hover-tools left">Edit learner's account</a>
+					{{ Form::open(['url' => '/learners/'.$user->user->id, 'method' => 'delete']) }}
 						{{ Form::submit('Remove student', ['class' => 'btn btn-no btn-hover-tools']) }}
 					{{ Form::close() }}
 				</th>

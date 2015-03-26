@@ -10,13 +10,33 @@ class PerformancesController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('backend.performances.index');
+		$teacher_id = Auth::user()->id;
+		$count = Subscription::where('teacher_id', '=', $teacher_id)->count();
+
+		return View::make('backend.performances.index', compact('count'));
 	}
 
 	public function showLearners()
 	{
 		$teacher_id = Auth::user()->id;
-		$learners = Subscription::where('teacher_id', '=', $teacher_id)->get();
+		$count = Subscription::where('teacher_id', '=', $teacher_id)->count();
+		$learners_list = Subscription::where('teacher_id', '=', $teacher_id)->get();
+
+		$learners = [];
+
+		foreach ($learners_list as $learner) {
+			$learner_id = $learner->learner_id;
+			$scores_count = Score::where('user_id', '=', $learner_id)->count();
+
+			$learner;
+
+			if ( $scores_count > 7 ) {
+				$learners[] = $learner;
+			}
+
+			$learners;
+		}
+
 		$query = Request::get('q');
 
 		if ($query) {
@@ -42,7 +62,15 @@ class PerformancesController extends \BaseController {
 	{
 		// $scores = Score::distinct()->groupBy('user_id')->get();
 		$teacher_id = Auth::user()->id;
-		$learners = Subscription::where('teacher_id', '=', $teacher_id)->get();
+		
+		$count = Subscription::where('teacher_id', '=', $teacher_id)->count();
+		
+		if ( $count != 0 ) {
+			$learners = Subscription::where('teacher_id', '=', $teacher_id)->get();
+		} else {
+			$learners = null;
+		};
+
 		$query = Request::get('q');
 
 
@@ -83,7 +111,7 @@ class PerformancesController extends \BaseController {
 		# Performance per learner
 		// Get scores and group by user id
 		$learner_performance = DB::table('scores')
-									->select(DB::raw('user_id, round((user_score/total_questions)*100, 2) as percentage'))
+									->select(DB::raw('user_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage'))
 									->groupBy('user_id')
 									->get();
 
@@ -110,7 +138,7 @@ class PerformancesController extends \BaseController {
 		# Best and worst performing exercises
 		// Get exercise scores and group by exercise id
 		$exercise_performance = DB::table('scores')
-							->select(DB::raw('exercise_id, round((user_score/total_questions)*100, 2) as percentage'))
+							->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage'))
 							->groupBy('exercise_id')
 							->get();
 
@@ -133,7 +161,7 @@ class PerformancesController extends \BaseController {
 				// ->with('scores', $scores)
 				->with('users', $users)
 				->with('learners', $learners)
-				->with('performance', $subject_performance)
+				->with('subject_performance', $subject_performance)
 				->with('best_score', $best_score)
 				->with('worst_score', $worst_score)
 				->with('best_student', $best_student)
@@ -215,6 +243,11 @@ class PerformancesController extends \BaseController {
 
 		$worst_subject = array_slice($score_per_subject, 0, 1, true);
 
+
+
+
+
+
 		return View::make('backend.performances.show')
 					->with('user', User::find($user_id))
 					->with('scores', $scores)
@@ -252,6 +285,7 @@ class PerformancesController extends \BaseController {
 
 		# Scores for most recent exercises in said subject
 		$scores = $subjects->take(5);
+
 		$scores_all = Score::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->get();
@@ -266,20 +300,23 @@ class PerformancesController extends \BaseController {
 			$graph_dates[] = $date;
 		}
 
+		# Performance per exercise
+		$exercise_scores = DB::table('scores')
+							->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+							->where('user_id', '=', $user_id)
+							->where('subject_id', '=', $subject_id)
+							->groupBy('exercise_id')
+							->orderBy('percentage', 'desc')
+							->get();
+
 	
 		# Highest and lowest scores in said subject respectively
-		// $highest_score = $subjects->max('user_score');
-		// $high_total_questions = Highscore::where('subject_id', '=', $subject_id)->latest()->get();
-		// $high_total_questions_array = $high_total_questions[0];
-		// $high_total_questions = $high_total_questions_array['total_questions'];
-		// $high_exercise_id = $high_total_questions_array['exercise_id'];
-		// $high_exercise = Exercise::find($high_exercise_id);
 		$high_score = Highscore::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->orderBy('percentage', 'desc')
 							->first();
 
-		$high_score_percentage = $high_score->max('percentage');
+		$high_score_percentage = $high_score->percentage;
 		$high_exercise_id = Highscore::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->orderBy('percentage', 'desc')
@@ -289,21 +326,12 @@ class PerformancesController extends \BaseController {
 
 		$high_exercise = Exercise::find($high_exercise_id);
 		
-
-		// $lowest_score = $subjects->min('user_score');
-		// $low_total_questions = Lowscore::where('subject_id', '=', $subject_id)->latest()->get();
-		// $low_total_questions_array = $low_total_questions[0];
-		// $low_total_questions = $low_total_questions_array['total_questions'];
-		// $low_exercise_id = $low_total_questions_array['exercise_id'];
-		// $low_exercise = Exercise::find($low_exercise_id);
 		$low_score = Lowscore::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->orderBy('percentage', 'asc')
 							->first();
 
-		$low_score_percentage = Lowscore::where('subject_id', '=', $subject_id)
-							->where('user_id', '=', $user_id)
-							->min('percentage');
+		$low_score_percentage = $low_score->percentage;
 
 		$low_exercise_id = Lowscore::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
@@ -323,6 +351,7 @@ class PerformancesController extends \BaseController {
 					->with('percentage', $percentage)
 					->with('scores', $scores)
 					->with('subject', $subject)
+					->with('user', $user)
 					// ->with('highest_score', $highest_score)
 					// ->with('high_total_questions', $high_total_questions)
 					->with('high_score_percentage', $high_score_percentage)
@@ -336,8 +365,20 @@ class PerformancesController extends \BaseController {
 					->with('dates', $graph_dates)
 					// ->with('dates', $dates)
 					->with('scores_all', $scores_all->lists('user_score'))
-					->with('questions', $scores_all->lists('total_questions'));
+					->with('questions', $scores_all->lists('total_questions'))
+					->with('exercise_scores', $exercise_scores);
 	}
+
+
+	public function results($user_id)
+	{
+		$user = User::find($user_id);
+
+		return View::make('backend.performances.results')
+					->with('user', $user);
+	}
+
+
 
 	/**
 	 * Show the form for editing the specified resource.

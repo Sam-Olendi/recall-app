@@ -347,6 +347,10 @@ h1, h2, h3, h4, h5, h6 {
 	margin-bottom: 10px;
 }
 
+.alert-text {
+	font-size: 12px;
+}
+
 
 
 /*
@@ -1053,6 +1057,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #efefef;
 	padding: 20px;
 	border-radius: 0 0 5px 5px;
+	min-height: 110px;
 }
 
 ..perf-box-scores-alt {
@@ -1067,6 +1072,12 @@ h1, h2, h3, h4, h5, h6 {
 .perf-box-subtext {
 	color: #909090;
 	font-size: 12px;
+}
+
+.table-subtext {
+	color: #909090;
+	font-size: 11px;
+	text-shadow: none;
 }
 
 .perf-box-score {

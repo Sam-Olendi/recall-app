@@ -6,6 +6,10 @@
 @stop
 
 @section('content')
+<a href="/teacher/performance/overall/export" class="btn btn-go btn-top right" target="_blank">
+	Export to PDF
+</a>
+
 
 {{-- <div class="right btn-top">
 	<p>Search for a learner</p>
@@ -45,6 +49,8 @@
 	</table>
 </div>
 @endif --}}
+
+@if($learners != null)
 
 <h4>Overall Student Performance</h4>
 <div class="row">
@@ -93,7 +99,7 @@
 				@endforeach
 			</tbody>
 		</table>
-		<a href="#" class="btn btn-go right btn-hover-tools">View learner rankings</a>
+		{{-- <a href="#" class="btn btn-go right btn-hover-tools">View learner rankings</a> --}}
 	</div>
 </div>
 {{-- End of row --}}
@@ -162,7 +168,7 @@
 <p class="report-block-subtitle">This list shows the performance per subject of your learners</p>
 
 <div class="js-masonry" data-masonry-options='{ "columnWidth": 30, "itemSelector": ".perf-box-item" }'>
-@foreach($performance as $performance)
+@foreach($subject_performance as $performance)
 	<div class="perf-box-item">
 		<?php $subject = Subject::find($performance->subject_id) ?>
 		<h5 class="perf-box-heading">{{ $subject->subject_name }}</h5>
@@ -193,4 +199,14 @@
 	</tbody>
 	
 </table> --}}
+
+@endif
+
+
+@if( $learners == null )
+
+<p>You have no learners at the moment. Please follow some learners to view their performances</p>
+
+@endif
+
 @stop

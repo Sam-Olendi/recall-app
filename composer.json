@@ -6,6 +6,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"intervention/image": "2.*",
+		"barryvdh/laravel-dompdf": "0.4.*",
 		"maatwebsite/excel": "1.*"
 	},
 	"require-dev": {
