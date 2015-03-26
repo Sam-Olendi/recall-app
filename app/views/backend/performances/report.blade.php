@@ -4,6 +4,10 @@
 @stop
 @section('content')
 
+<a href="/teacher/performance/{{$user->id}}/report/{{$subject->id}}/export" class="btn btn-go btn-top right" target="_blank">
+	Export to PDF
+</a>
+
 <div class="row">
 	<div class="col-md-8">
 		<div>

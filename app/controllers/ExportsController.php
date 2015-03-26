@@ -198,4 +198,27 @@ class ExportsController extends \BaseController {
 
 	}
 
+
+	public function subject($user_id, $subject_id){
+
+		$user = User::find($user_id);
+		$subject = Subject::find($subject_id);
+
+		# Overall performance in percentage
+
+
+		# Best and least performed subject
+
+
+		# Exercise performance in percentage
+
+
+		# Most and least practiced exercises
+
+
+		$pdf = App::make('dompdf');
+		$pdf->loadView('backend.exports.subject', compact('user', 'subject', 'overall_score'));
+		return $pdf->download();
+	}
+
 }

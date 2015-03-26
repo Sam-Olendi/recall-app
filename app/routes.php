@@ -95,6 +95,7 @@ Route::group(['prefix' => '/teacher', 'before' => 'auth'], function(){
 
 	Route::get('/performance/overall/export', 'ExportsController@overall');
 	Route::get('/performance/{learner}/report/export', 'ExportsController@report');
+	Route::get('/performance/{learner}/report/{subject}/export', 'ExportsController@subject');
 
 
 });
