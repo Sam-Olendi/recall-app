@@ -23,6 +23,7 @@ class CreateScoresTable extends Migration {
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->integer('total_questions');
 			$table->integer('user_score');
+			$table->date('date');
 			$table->timestamps();
 		});
 	}

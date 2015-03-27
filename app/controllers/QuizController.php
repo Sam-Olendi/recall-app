@@ -57,6 +57,7 @@ class QuizController extends \BaseController {
 		$score->user_id = $user_id;
 		$score->total_questions = $question_number;
 		$score->user_score = $user_score;
+		$score->date = date("Y-m-d");
 		$score->save();
 
 		# get highest score and if lower than recent score, update

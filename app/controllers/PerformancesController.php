@@ -289,10 +289,15 @@ class PerformancesController extends \BaseController {
 		$scores_all = Score::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->get();
+		// $dates = Score::where('subject_id', '=', $subject_id)
+		// 					->where('user_id', '=', $user_id)
+		// 					->get(['created_at']);
+		// $dates = $dates->lists('created_at');
+
 		$dates = Score::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
-							->get(['created_at']);
-		$dates = $dates->lists('created_at');
+							->get(['date']);
+		$dates = $dates->lists('date');
 
 		$graph_dates = [];
 

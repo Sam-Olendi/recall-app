@@ -47,7 +47,7 @@ Leftover Todos
 + Add most performed exercise
 + Add most performed subject
 + Add reports per subject
------ Fix graph error: - Convert object to list item
++ Fix graph error: - Convert object to list item
 
 Bugs
 + On edit, images do not upload
@@ -55,8 +55,8 @@ Bugs
 + Chart js graph not showing data when only one value is fetched (showing data badly)
 + Cannot have multiple users logged in at the same time (Ask Gibson)
 + Percentage formula
-- Chart JS cannot fetch object: Convert object to a list
-- Fix search
++ Chart JS cannot fetch object: Convert object to a list
++ Fix search
 
 Additional features (very low priority)
 + Ensure validation works
