@@ -13,7 +13,7 @@ class SubjectsController extends \BaseController {
 		$query = Request::get('q');
 
 		if ($query) {
-			$subjects = Subject::where('subject_name', 'LIKE', "%$query%")->get();
+			$subjects = Subject::where('subject_name', 'LIKE', "%$query%")->paginate(5);
 		}
 
 		return View::make('backend.subjects.index')

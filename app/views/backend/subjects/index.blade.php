@@ -25,7 +25,6 @@ My Subjects
 	<table class="table table-striped table-hover table-row-link">
 		<thead>
 			<tr>
-				<th>#</th>
 				<th></th>
 				<th>Subject Name</th>
 				<th>Description</th>
@@ -35,7 +34,6 @@ My Subjects
 		<tbody>
 			@foreach($subjects as $subject)
 			<tr>
-				<th> {{ $subject->id }} </th>
 				<th> <img src="/assets/img/subject-icon.png" width="30px"> </th>
 				<th> <a href="/subjects/{{$subject->id}}"> {{ $subject->subject_name }} </a></th>
 				<th class="table-description"> {{ $subject->subject_description }} </th>

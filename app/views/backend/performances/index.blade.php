@@ -8,7 +8,7 @@ Welcome to the Recall Teacher Dashboard
 
 <h4>View performance reports:</h4>
 <div>
-	@if($count >= 1)
+	@if($count >= 5)
 	<btn class="report-btn">
 		<div class="rbn-icon left">
 			<span class="fa fa-list"></span>

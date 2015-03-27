@@ -9,6 +9,29 @@
 @section('content')
 
 <section>
+	<h3 class="section-title">Learner Rankings</h3>
+	<p class="section-subtitle">This is a ranking of your learners.</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Learner</th>
+				<th>Overall percentage</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($top_five_students as $learner_id => $percentage)
+				<tr>
+					<?php $user = User::find($learner_id); ?>
+					<td> {{ $user->first_name }} {{ $user->last_name }} </td>
+					<td> {{ $percentage }}% </td>
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
+</section>
+
+
+<section>
 	<h3 class="section-title">Learner performance</h3>
 	<p class="section-subtitle">These are your best and least performing learners</p>
 
@@ -134,35 +157,8 @@
 				@endforeach
 			</tr>
 		</tbody>
-	</table>
-
-	
-
-	
+	</table>	
 </section>
 
-
-
-<section>
-	<h3 class="section-title">Learner Rankings</h3>
-	<p class="section-subtitle">This is a ranking of your learners.</p>
-	<table>
-		<thead>
-			<tr>
-				<th>Learner</th>
-				<th>Overall percentage</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($top_five_students as $learner_id => $percentage)
-				<tr>
-					<?php $user = User::find($learner_id); ?>
-					<td> {{ $user->first_name }} {{ $user->last_name }} </td>
-					<td> {{ $percentage }} </td>
-				</tr>
-			@endforeach
-		</tbody>
-	</table>
-</section>
 
 @stop

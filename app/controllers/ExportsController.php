@@ -5,103 +5,84 @@ class ExportsController extends \BaseController {
 	public function overall(){
 
 		$teacher_id = Auth::user()->id;
-			
-			$count = Subscription::where('teacher_id', '=', $teacher_id)->count();
-			
-			if ( $count != 0 ) {
-				$learners = Subscription::where('teacher_id', '=', $teacher_id)->get();
-			} else {
-				$learners = null;
-			};
 
-			$query = Request::get('q');
+		# Overall performance per subject
+		// Get subject scores and group by performance.
+		$subject_performance = DB::table('scores')
+							->select(DB::raw('subject_id, sum(user_score) as scores, sum(total_questions) as totals'))
+							->groupBy('subject_id')
+							->get();
 
+		# Overall best and worst performing subjects
+		$subject_number = DB::table('subjects')->orderBy('id', 'desc')->lists('id');
+		$j = $subject_number[0]; // delimiter
+		$score_per_subject = [];
 
-			if ($query) {
-				$users = User::where('first_name', 'LIKE', "%$query%")
-									->orWhere('last_name', 'LIKE', "%$query%")
-									->get();			
-			} else {
-				$users = null;
-			}
+		for ($i=0; $i < $j; $i++) { 
+			$subject_score = array_get($subject_performance, $i);
+			$score_per_subject[$subject_score->subject_id] = round(($subject_score->scores/$subject_score->totals)*100, 2);
+		}
 
-			# Overall performance per subject
-			// Get subject scores and group by performance.
-			$subject_performance = DB::table('scores')
-								->select(DB::raw('subject_id, sum(user_score) as scores, sum(total_questions) as totals'))
-								->groupBy('subject_id')
-								->get();
+		// Best performing subject
+		arsort($score_per_subject);
+		$best_score = array_slice($score_per_subject, 0, 1, true);
 
-			# Overall best and worst performing subjects
-			$subject_number = DB::table('subjects')->orderBy('id', 'desc')->lists('id');
-			$j = $subject_number[0]; // delimiter
-			$score_per_subject = [];
-
-			for ($i=0; $i < $j; $i++) { 
-				$subject_score = array_get($subject_performance, $i);
-				$score_per_subject[$subject_score->subject_id] = round(($subject_score->scores/$subject_score->totals)*100, 2);
-			}
-
-			// Best performing subject
-			arsort($score_per_subject);
-			$best_score = array_slice($score_per_subject, 0, 1, true);
-
-			// Worst performing subject
-			asort($score_per_subject);
-			$worst_score = array_slice($score_per_subject, 0, 1, true);
+		// Worst performing subject
+		asort($score_per_subject);
+		$worst_score = array_slice($score_per_subject, 0, 1, true);
 
 
-			# Performance per learner
-			// Get scores and group by user id
-			$learner_performance = DB::table('scores')
-										->select(DB::raw('user_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage'))
-										->groupBy('user_id')
-										->get();
+		# Performance per learner
+		// Get scores and group by user id
+		$learner_performance = DB::table('scores')
+									->select(DB::raw('user_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage'))
+									->groupBy('user_id')
+									->get();
 
-			$score_per_user = [];
+		$score_per_user = [];
 
-			# Best and poorest performing student
-			foreach ($learner_performance as $key => $value) {
-				$score_per_user[$value->user_id] = $value->percentage;
-			}
+		# Best and poorest performing student
+		foreach ($learner_performance as $key => $value) {
+			$score_per_user[$value->user_id] = $value->percentage;
+		}
 
-			// Best performing student
-			arsort($score_per_user);
-			$best_student = array_slice($score_per_user, 0, 1, true);
+		// Best performing student
+		arsort($score_per_user);
+		$best_student = array_slice($score_per_user, 0, 1, true);
 
-			// Poorest performing student
-			asort($score_per_user);
-			$worst_student = array_slice($score_per_user, 0, 1, true);
+		// Poorest performing student
+		asort($score_per_user);
+		$worst_student = array_slice($score_per_user, 0, 1, true);
 
-			# Top 5 learners
-			arsort($score_per_user);
-			$top_five_students = $score_per_user;
+		# Top 5 learners
+		arsort($score_per_user);
+		$top_five_students = $score_per_user;
 
 
-			# Best and worst performing exercises
-			// Get exercise scores and group by exercise id
-			$exercise_performance = DB::table('scores')
-								->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage'))
-								->groupBy('exercise_id')
-								->get();
+		# Best and worst performing exercises
+		// Get exercise scores and group by exercise id
+		$exercise_performance = DB::table('scores')
+							->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage'))
+							->groupBy('exercise_id')
+							->get();
 
-			$score_per_exercise = [];
+		$score_per_exercise = [];
 
-			foreach ($exercise_performance as $key => $value) {
-				$score_per_exercise[$value->exercise_id] = $value->percentage;
-			}
+		foreach ($exercise_performance as $key => $value) {
+			$score_per_exercise[$value->exercise_id] = $value->percentage;
+		}
 
-			// Best performing exercise
-			arsort($score_per_exercise);
-			$best_exercise = array_slice($score_per_exercise, 0, 1, true);
+		// Best performing exercise
+		arsort($score_per_exercise);
+		$best_exercise = array_slice($score_per_exercise, 0, 1, true);
 
-			// Worst performing exercise
-			asort($score_per_exercise);
-			$worst_exercise = array_slice($score_per_exercise, 0, 1, true);
+		// Worst performing exercise
+		asort($score_per_exercise);
+		$worst_exercise = array_slice($score_per_exercise, 0, 1, true);
 
-			$pdf = App::make('dompdf');
-			$pdf->loadView('backend.exports.overall', compact('learners', 'users', 'subject_performance', 'best_score', 'worst_score', 'best_student', 'worst_student', 'top_five_students', 'best_exercise', 'worst_exercise'));
-			return $pdf->download();
+		$pdf = App::make('dompdf');
+		$pdf->loadView('backend.exports.overall', compact('learners', 'users', 'subject_performance', 'best_score', 'worst_score', 'best_student', 'worst_student', 'top_five_students', 'best_exercise', 'worst_exercise'));
+		return $pdf->download();
 
 	}
 

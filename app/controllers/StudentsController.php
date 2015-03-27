@@ -13,10 +13,20 @@ class StudentsController extends \BaseController {
 		// $role =  Role::find(2);
 		// $users = $role->users;
 
-		$users = Subscription::where('teacher_id', '=', Auth::user()->id)->get();
+		$users = Subscription::where('teacher_id', '=', Auth::user()->id)->paginate(5);
+		$query = Request::get('q');
+
+		if ($query) {
+			$results = User::where('first_name', 'LIKE', "%$query%")
+						->orWhere('last_name', 'LIKE', "%$query%")
+						->get();
+		} else {
+			$results = null;
+		}
 
 		return View::make('backend.students.index')
-					->with('users', $users);
+					->with('users', $users)
+					->with('results', $results);
 	}
 
 

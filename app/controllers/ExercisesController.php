@@ -13,7 +13,7 @@ class ExercisesController extends \BaseController {
 		$query = Request::get('q');
 
 		if ($query) {
-			$exercises = Exercise::where('exercise_name', 'LIKE', "%$query%")->get();
+			$exercises = Exercise::where('exercise_name', 'LIKE', "%$query%")->paginate(5);
 		}
 
 		return View::make('backend.exercises.index')

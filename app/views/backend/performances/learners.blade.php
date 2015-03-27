@@ -20,10 +20,6 @@
 	{{ Form::close() }}
 </div>
 
-<a href="/teacher/learner/subscribe" class="btn btn-go">
-	+ Follow new learner
-</a>
-
 <hr>
 
 @if($users != null)
@@ -73,4 +69,8 @@
 	</tbody>
 	
 </table>
+
+<a href="/teacher/learner/subscribe" class="btn btn-go btn-hover-tools right">
+	+ Follow new learner
+</a>
 @stop

@@ -13,7 +13,7 @@ class BooksController extends \BaseController {
 		$query = Request::get('q');
 
 		if ($query) {
-			$books = Book::where('book_title', 'LIKE', "%$query%")->get();
+			$books = Book::where('book_title', 'LIKE', "%$query%")->paginate(5);
 		}
 
 		return View::make('backend.books.index')

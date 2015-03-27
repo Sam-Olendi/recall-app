@@ -24,7 +24,6 @@ My Exercises
 	<table class="table table-striped table-hover table-row-link">
 		<thead>
 			<tr>
-				<th>#</th>
 				<th></th>
 				<th>Exercise</th>
 				<th>Description</th>
@@ -34,8 +33,7 @@ My Exercises
 		<tbody>
 			@foreach($exercises as $exercise)
 			<tr>
-				<th> {{ $exercise->id }} </th>
-				<th> <img src="{{ $exercise->exercise_icon }}"> </th>
+				<th> <img src="/assets/img/exercise-icon.png" width="30px"> </th>
 				<th> <a href="/subjects/{{$exercise->subject->id}}/exercises/{{ $exercise->id }}"> {{ $exercise->exercise_name }} </a></th>
 				<th class="table-description"> {{ $exercise->exercise_description }} </th>
 				<th class="table-tools">

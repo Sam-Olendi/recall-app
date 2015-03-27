@@ -9,10 +9,7 @@
 
 <div>
 
-	<a href="/subjects/{{$subject->id}}/exercises/create" class="btn btn-go btn-top right">
-		+ Add New Exercise
-	</a>
-
+	<div class="right btn-top">
 	<p>Search</p>
 	{{ Form::open(['method' => 'get']) }}
 		<div class="form-group" >
@@ -20,6 +17,12 @@
 		{{ Form::submit('Search', ['class' => 'btn btn-go btn-hover-tools']) }}
 		</div>
 	{{ Form::close() }}
+	</div>
+
+	<a href="/subjects/{{$subject->id}}/exercises/create" class="btn btn-go">
+		+ Add New Exercise
+	</a>
+
 
 	<hr>
 
@@ -27,7 +30,6 @@
 	<table class="table table-striped table-hover table-row-link">
 		<thead>
 			<tr>
-				<th>#</th>
 				<th></th>
 				<th>Exercise Name</th>
 				<th>Description</th>
@@ -37,8 +39,7 @@
 		<tbody>
 			@foreach($exercises as $exercise)
 			<tr>
-				<th> {{ $exercise->id }} </th>
-				<th> <img src="{{ $exercise->exercise_icon }}"> </th>
+				<th> <img src="/assets/img/exercise-icon.png" width="30px"> </th>
 				<th> <a href="/subjects/{{$subject->id}}/exercises/{{$exercise->id}}"> {{ $exercise->exercise_name }} </a></th>
 				<th class="table-description"> {{ $exercise->exercise_description }} </th>
 				<th class="table-tools">
