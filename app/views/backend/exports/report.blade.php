@@ -10,7 +10,7 @@
 
 <section>
 	<h3 class="section-title">Performance per subject</h3>
-	<p class="section-subtitle">These are your best and least performing learners</p>
+	<p class="section-subtitle">This is {{ $user->first_name }}'s performance in each subject.</p>
 	<table>
 		<thead>
 			<tr>
@@ -32,7 +32,7 @@
 
 <section>
 	<h3 class="section-title">Subject performance comparisons</h3>
-	<p class="section-subtitle">These are your best and least performing learners</p>
+	<p class="section-subtitle">These are {{ $user->first_name }}'s best and least performing subjects. These are their highest and lowest scores.</p>
 	<table>
 		<thead>
 			<tr>
@@ -51,7 +51,7 @@
 				@endforeach
 			</tr>
 			<tr>
-				<td>Worst Subject</td>
+				<td>Poorest Subject</td>
 				@foreach($worst_subject as $score)
 					<?php $subject = Subject::find($score->subject_id) ?>
 					<td> {{ $subject->subject_name }} </td>
@@ -64,7 +64,7 @@
 
 <section>
 	<h3 class="section-title">Subject performance frequencies</h3>
-	<p class="section-subtitle">These are your best and least performing learners</p>
+	<p class="section-subtitle">These are the subjects in which {{ $user->first_name }} practices the most and the least respectively.</p>
 	<table>
 		<thead>
 			<tr>
@@ -100,7 +100,7 @@
 
 <section>
 	<h3 class="section-title">Performance per exercise</h3>
-	<p class="section-subtitle">These are your best and least performing learners</p>
+	<p class="section-subtitle">These are {{ $user->first_name }}'s scores in each exercise</p>
 	<table>
 		<thead>
 			<tr>
@@ -129,7 +129,7 @@
 
 <section>
 	<h3 class="section-title">Exercise performance comparisons</h3>
-	<p class="section-subtitle">These are your best and least performing learners</p>
+	<p class="section-subtitle">These are {{ $user->first_name }}'s best and least performing exercises. These are their highest and lowest scores in the exercises.</p>
 	<table>
 		<thead>
 			<tr>
@@ -155,7 +155,7 @@
 				@endforeach
 			</tr>
 			<tr>
-				<td>Worst Exercise</td>
+				<td>Poorest Exercise</td>
 				@foreach($worst_exercise as $score)
 					<?php 
 						$exercise = Exercise::find($score->exercise_id);
@@ -173,7 +173,7 @@
 
 <section>
 	<h3 class="section-title">Exercise performance frequencies</h3>
-	<p class="section-subtitle">These are your best and least performing learners</p>
+	<p class="section-subtitle">These are the exercises in which {{ $user->first_name }} practices the most and the least respectively.</p>
 	<table>
 		<thead>
 			<tr>
@@ -181,6 +181,7 @@
 				<th>Exercise</th>
 				<th>Subject</th>
 				<th>Percentage performance</th>
+				<th>Frequency</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -194,6 +195,7 @@
 					<td> {{ $exercise->exercise_name }} </td>
 					<td> {{ $subject->subject_name }} </td>
 					<td> {{ $popular->percentage }}% </td>
+					<td> {{ $popular->count }} </td>
 				@endforeach
 			</tr>
 			<tr>
@@ -206,6 +208,7 @@
 					<td> {{ $exercise->exercise_name }} </td>
 					<td> {{ $subject->subject_name }} </td>
 					<td> {{ $unpopular->percentage }}% </td>
+					<td> {{ $unpopular->count }} </td>
 				@endforeach
 			</tr>
 		</tbody>

@@ -164,7 +164,7 @@
 
 <hr>
 
-<h4>Performance per Subject</h4>
+<h4>Performance per subject</h4>
 <p class="report-block-subtitle">This list shows the performance per subject of your learners</p>
 
 <div class="js-masonry" data-masonry-options='{ "columnWidth": 30, "itemSelector": ".perf-box-item" }'>

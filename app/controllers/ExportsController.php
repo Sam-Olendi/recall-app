@@ -205,19 +205,73 @@ class ExportsController extends \BaseController {
 		$subject = Subject::find($subject_id);
 
 		# Overall performance in percentage
+		// Get scores for user_id and subject_id. Group by subject_id.
+		$overall_score = DB::table('scores')
+							->where('user_id', '=', $user_id)
+							->where('subject_id', '=', $subject_id)
+							->select(DB::raw('round((sum(user_score)/sum(total_questions))*100, 2) as percentage'))
+							->get();
 
 
 		# Best and least performed subject
+		$best_score = DB::table('scores')
+						->where('user_id', '=', $user_id)
+						->where('subject_id', '=', $subject_id)
+						->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+						->groupBy('exercise_id')
+						->orderBy('percentage', 'desc')
+						->get();
+
+		$best_score = array_slice($best_score, 0, 1, true);
+
+		$worst_score = DB::table('scores')
+						->where('user_id', '=', $user_id)
+						->where('subject_id', '=', $subject_id)
+						->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+						->groupBy('exercise_id')
+						->orderBy('percentage')
+						->get();
+
+		$worst_score = array_slice($worst_score, 0, 1, true);
 
 
 		# Exercise performance in percentage
+		$scores = DB::table('scores')
+							->where('user_id', '=', $user_id)
+							->where('subject_id', '=', $subject_id)
+							->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+							->groupBy('exercise_id')
+							->orderBy('percentage', 'desc')
+							->get();
 
 
 		# Most and least practiced exercises
+		$popular_exercise = DB::table('scores')
+								->where('user_id', '=', $user_id)
+								->where('subject_id', '=', $subject_id)
+								->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+								->groupBy('exercise_id')
+								->orderBy('count', 'desc')
+								->orderBy('percentage', 'desc')
+								->get();
 
+		$popular_exercise = array_slice($popular_exercise, 0, 1, true);
+
+		$unpopular_exercise = DB::table('scores')
+								->where('user_id', '=', $user_id)
+								->where('subject_id', '=', $subject_id)
+								->select(DB::raw('exercise_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+								->groupBy('exercise_id')
+								->orderBy('count', 'asc')
+								->orderBy('percentage', 'asc')
+								->get();
+
+		$unpopular_exercise = array_slice($unpopular_exercise, 0, 1, true);
+
+		// return View::make('backend.exports.subject', compact('user', 'subject', 'overall_scores'));
 
 		$pdf = App::make('dompdf');
-		$pdf->loadView('backend.exports.subject', compact('user', 'subject', 'overall_score'));
+		$pdf->loadView('backend.exports.subject', compact('user', 'subject', 'overall_score', 'best_score', 'worst_score', 'scores', 'popular_exercise', 'unpopular_exercise'));
 		return $pdf->download();
 	}
 
