@@ -156,7 +156,7 @@
 			pointStrokeColor: "#fff",
 		}]
 	};
-	new Chart(ctx).Bar(chart);
+	new Chart(ctx).Line(chart);
 })();
 </script>
 @stop
