@@ -22,38 +22,17 @@
 
 <hr>
 
-@if($users != null)
-<div class="search-results" style="background-color: #f4f4f4; border-radius: 5px; padding: 30px 20px;">
-	<i>Search results:</i> <br>
-	<table class="table table-striped table-hover table-row-link">
-		<thead>
-			<tr>
-				<th>#</th>
-				<th>Student Name</th>
-			</tr>
-		</thead>
-		<tbody>
-			@foreach($users as $user)
-			<tr>
-				<th></th>
-				<th> <a href="/teacher/performance/{{ $user->id }}"> {{ $user->first_name }} {{ $user->last_name }} </a> </th>
-			</tr>
-			@endforeach
-		</tbody>
-	</table>
-</div>
-@endif
+
 
 <div>
 	<p class="alert alert-warning alert-dismissible alert-text" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Note:</strong> If one of your learners does not appear here, it is because they have done very few exercises, hence there is very little data to organize and report.</p>
 </div>
 
 <br>
-
+@if($users == null)
 <table class="table table-striped table-hover table-row-link">
 	<thead>
 		<tr>
-			<th>#</th>
 			<th>Student</th>
 			<th></th>
 		</tr>
@@ -61,7 +40,6 @@
 	<tbody>
 		@foreach($learners as $learner)
 		<tr>
-			<th> {{ $learner->id }} </th>
 			<th><a href="/teacher/performance/{{ $learner->user->id }}">{{ $learner->user->first_name }} {{ $learner->user->last_name }}</a></th>
 			<th><a href="/teacher/performance/{{ $learner->user->id }}" class="btn btn-default btn-hover-tools">View report</a></th>
 		</tr>
@@ -69,6 +47,23 @@
 	</tbody>
 	
 </table>
+@else
+
+<table class="table table-striped table-hover table-row-link">
+		<thead>
+			<tr>
+				<th>Student Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach($users as $user)
+			<tr>
+				<th> <a href="/teacher/performance/{{ $user->id }}"> {{ $user->first_name }} {{ $user->last_name }} </a> </th>
+			</tr>
+			@endforeach
+		</tbody>
+	</table>
+@endif
 
 <a href="/teacher/learner/subscribe" class="btn btn-go btn-hover-tools right">
 	+ Follow new learner
