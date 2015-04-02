@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 
 @section('heading')
-	<a href="/teacher/books"><span class="glyphicon glyphicon-chevron-left back-icon"></span></a>
+	<a href="/teacher/mybooks"><span class="glyphicon glyphicon-chevron-left back-icon"></span></a>
 	Edit Book: {{ $book->book_title }}
 @stop
 

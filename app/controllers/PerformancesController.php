@@ -50,7 +50,7 @@ class PerformancesController extends \BaseController {
 
 		return View::make('backend.performances.learners')
 						->with('users', $users)
-						->with('learners', $learners);
+						->with('learners', $learners_list);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class PerformancesController extends \BaseController {
 		# Overall performance per subject
 		// Get subject scores and group by performance.
 		$subject_performance = DB::table('scores')
-							->select(DB::raw('subject_id, sum(user_score) as scores, sum(total_questions) as totals'))
+							->select(DB::raw('subject_id, sum(user_score) as scores, sum(total_questions) as totals, count(user_score) as count'))
 							->groupBy('subject_id')
 							->get();
 
@@ -132,7 +132,7 @@ class PerformancesController extends \BaseController {
 
 		# Top 5 learners
 		arsort($score_per_user);
-		$top_five_students = array_slice($score_per_user, 0, 5, true);
+		$top_three_students = array_slice($score_per_user, 0, 3, true);
 
 
 		# Best and worst performing exercises
@@ -157,6 +157,14 @@ class PerformancesController extends \BaseController {
 		$worst_exercise = array_slice($score_per_exercise, 0, 1, true);
 
 
+		# Overall Learner Performance
+		$overall_scores = DB::table('scores')
+								->select(DB::raw('user_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+								->groupBy('user_id')
+								->orderBy('user_id', 'desc')
+								->get();
+
+
 		return View::make('backend.performances.overall')
 				// ->with('scores', $scores)
 				->with('users', $users)
@@ -166,9 +174,10 @@ class PerformancesController extends \BaseController {
 				->with('worst_score', $worst_score)
 				->with('best_student', $best_student)
 				->with('worst_student', $worst_student)
-				->with('top_five_students', $top_five_students)
+				->with('top_three_students', $top_three_students)
 				->with('best_exercise', $best_exercise)
-				->with('worst_exercise', $worst_exercise);
+				->with('worst_exercise', $worst_exercise)
+				->with('overall_scores', $overall_scores);
 	}
 
 	/**
@@ -191,7 +200,16 @@ class PerformancesController extends \BaseController {
 	 */
 	public function show($user_id)
 	{
-		$scores = Score::where('user_id', '=', $user_id)->take(5)->get();
+
+		$score = Score::where('user_id', '=', $user_id)->get();
+
+		if ($score->isEmpty()) {
+			
+			return View::make('backend.performances.none')
+					->with('user', User::find($user_id));
+
+		} else {
+			$scores = Score::where('user_id', '=', $user_id)->take(5)->get();
 
 		$subjects = [];
 
@@ -226,36 +244,15 @@ class PerformancesController extends \BaseController {
 					->groupBy('subject_id')
 					->get();
 
-		# Best performing subject
-		$score_per_subject = [];
-
-		for ($i=0; $i < $j; $i++) { 
-			$subject_score = array_get($subject_scores, $i);
-			$score_per_subject[$subject_score->subject_id] = round(($subject_score->scores/$subject_score->totals)*100, 2);
-		};
-
-
-		arsort($score_per_subject);
-
-		$best_subject = array_slice($score_per_subject, 0, 1, true);
-
-		asort($score_per_subject);
-
-		$worst_subject = array_slice($score_per_subject, 0, 1, true);
-
-
-
-
-
-
 		return View::make('backend.performances.show')
 					->with('user', User::find($user_id))
 					->with('scores', $scores)
 					->with('subjects', $subjects)
 					->with('percentages', $subject_percentage)
-					->with('subject_scores', $subject_scores)
-					->with('best_subject', $best_subject)
-					->with('worst_subject', $worst_subject);
+					->with('subject_scores', $subject_scores);
+		}
+
+		
 	}
 
 
@@ -281,7 +278,18 @@ class PerformancesController extends \BaseController {
 		# Percentage score for the selected subject under the given user id
 		$userscores = $subjects->sum('user_score');
 		$totalscores = $subjects->sum('total_questions');
-		$percentage = round(($userscores / $totalscores) * 100, 2); //percentage score
+		if ( $userscores == 0 || $totalscores == 0 ) {
+			$percentage = null;
+		} else {
+			$percentage = round(($userscores / $totalscores) * 100, 2); //percentage score	
+		}
+
+		$subject_count = DB::table('scores')
+							->select(DB::raw('count(user_score) as count'))
+							->where('subject_id', '=', $subject_id)
+							->where('user_id', '=', $user_id)
+							->groupBy('subject_id')
+							->get();
 
 		# Scores for most recent exercises in said subject
 		$scores = $subjects->take(5);
@@ -289,11 +297,7 @@ class PerformancesController extends \BaseController {
 		$scores_all = Score::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->get();
-		// $dates = Score::where('subject_id', '=', $subject_id)
-		// 					->where('user_id', '=', $user_id)
-		// 					->get(['created_at']);
-		// $dates = $dates->lists('created_at');
-
+		
 		$dates = Score::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->get(['date']);
@@ -321,7 +325,12 @@ class PerformancesController extends \BaseController {
 							->orderBy('percentage', 'desc')
 							->first();
 
-		$high_score_percentage = $high_score->percentage;
+		if ($high_score != null) {
+			$high_score_percentage = $high_score->percentage;
+		} else {
+			$high_score_percentage = null;
+		}
+
 		$high_exercise_id = Highscore::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
 							->orderBy('percentage', 'desc')
@@ -336,7 +345,11 @@ class PerformancesController extends \BaseController {
 							->orderBy('percentage', 'asc')
 							->first();
 
-		$low_score_percentage = $low_score->percentage;
+		if ($low_score != null) {
+			$low_score_percentage = $low_score->percentage;
+		} else {
+			$low_score_percentage = null;
+		}
 
 		$low_exercise_id = Lowscore::where('subject_id', '=', $subject_id)
 							->where('user_id', '=', $user_id)
@@ -356,6 +369,7 @@ class PerformancesController extends \BaseController {
 					->with('percentage', $percentage)
 					->with('scores', $scores)
 					->with('subject', $subject)
+					->with('subjects', $subjects)
 					->with('user', $user)
 					// ->with('highest_score', $highest_score)
 					// ->with('high_total_questions', $high_total_questions)
@@ -371,7 +385,8 @@ class PerformancesController extends \BaseController {
 					// ->with('dates', $dates)
 					->with('scores_all', $scores_all->lists('user_score'))
 					->with('questions', $scores_all->lists('total_questions'))
-					->with('exercise_scores', $exercise_scores);
+					->with('exercise_scores', $exercise_scores)
+					->with('subject_count', $subject_count);
 	}
 
 

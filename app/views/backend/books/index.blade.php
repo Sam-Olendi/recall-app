@@ -28,24 +28,26 @@ My Books
 	<table class="table table-striped table-hover table-row-link">
 		<thead>
 			<tr>
-				<th>#</th>
 				<th></th>
 				<th>Title</th>
 				<th>Author</th>
 				<th>Publisher</th>
-				<th>Link</th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($books as $book)
 			<tr>
-				<th> {{ $book->id }} </th>
-				<th> <img src="{{ $book->book_cover }}"> </th>
+				<th>
+				@if($book->book_cover != null)
+				<img src="/assets/books/{{ $book->book_cover }}" height="50px">
+				@else
+				<div style="height: 50px; width: 35px; background-color: #ddd;"></div>
+				@endif
+				</th>
 				<th> {{ $book->book_title }} </th>
 				<th class="table-description"> {{ $book->author }} </th>
 				<th class="table-description"> {{ $book->publisher }} </th>
-				<th class="table-description"> {{ $book->book_link }} </th>
 				<th class="table-tools">
 					<a href="/books/{{$book->id}}/edit" class="btn btn-hover-tools btn-default left"> Edit</a>
 					{{ Form::open(['route' => ['books.destroy', $book->id], 'method' => 'delete']) }}

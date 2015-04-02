@@ -66,6 +66,16 @@ class StudentsController extends \BaseController {
 		# save role as learner
 		$learner->roles()->attach(2);
 
+		$learner_id = User::orderBy('id', 'desc')->first(['id']);
+
+		$learner_id = $learner_id['id'];
+
+		# subscribe teacher to learner
+		$subscription = new Subscription;
+		$subscription->teacher_id = Auth::user()->id;
+		$subscription->learner_id = $learner_id;
+		$subscription->save();
+
 		# redirect to login
 		return Redirect::to('/teacher/mystudents')
 				->with('success', 'The student has successfully been created');

@@ -42,7 +42,7 @@
                 </div><!--/.navbar-header-->
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class=""> <a href="/learner/classroom"> View classroom </a> </li>
+                        {{-- <li class=""> <a href="/learner/classroom"> View classroom </a> </li> --}}
                         <li class=""><a href="/teacher/profile"><span class="glyphicon glyphicon-user"></span> Hello, {{ Auth::user()->first_name }}</a></li>
                         <li class=""><a href="/teacher/logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
                     </ul>

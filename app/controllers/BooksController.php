@@ -13,7 +13,10 @@ class BooksController extends \BaseController {
 		$query = Request::get('q');
 
 		if ($query) {
-			$books = Book::where('book_title', 'LIKE', "%$query%")->paginate(5);
+			$books = Book::where('book_title', 'LIKE', "%$query%")
+							->orWhere('author', 'LIKE', "%$query%")
+							->orWhere('publisher', 'LIKE', "%$query%")
+							->paginate(5);
 		}
 
 		return View::make('backend.books.index')
@@ -50,6 +53,7 @@ class BooksController extends \BaseController {
 		$book->author = Input::get('author');
 		$book->publisher = Input::get('publisher');
 		$book->ISBN = Input::get('ISBN');
+
 
 		if ( Input::hasFile('book_link') ) {
 			$book->book_link = Input::file('book_link')->getClientOriginalName();

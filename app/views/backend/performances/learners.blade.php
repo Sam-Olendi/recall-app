@@ -24,9 +24,9 @@
 
 
 
-<div>
+{{-- <div>
 	<p class="alert alert-warning alert-dismissible alert-text" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Note:</strong> If one of your learners does not appear here, it is because they have done very few exercises, hence there is very little data to organize and report.</p>
-</div>
+</div> --}}
 
 <br>
 @if($users == null)

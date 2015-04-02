@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
 
     <script src="{{ asset('assets/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/masonry.pkgd.min.js') }}"></script>
+
     
 </head>
 

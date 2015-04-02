@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration {
 			$table->text('question_text');
 			$table->string('question_image');
 			$table->integer('exercise_id')->unsigned();
-			$table->foreign('exercise_id')->references('id')->on('exercises');
+			$table->foreign('exercise_id')->references('id')->on('exercises')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

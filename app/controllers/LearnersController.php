@@ -10,27 +10,24 @@ class LearnersController extends \BaseController {
 	public function index()
 	{
 		# Performance per subject
-		$subject_number = DB::table('subjects')->orderBy('id', 'desc')->lists('id');
-		$j = $subject_number[0]; //delimiter
+		$score_per_subject = DB::table('scores')
+								->where('user_id', '=', Auth::user()->id)
+								->select(DB::raw('subject_id, round((sum(user_score)/sum(total_questions))*100, 2) as percentage, count(user_score) as count'))
+								->groupBy('subject_id')
+								->orderBy('percentage', 'desc')
+								->get();
 
-		$subject_score = [];
-		$subject_total_questions = [];
-		$subject_percentage = [];
-		
-		for ($i=0; $i <= $j; $i++) { 
-					if ( $subject = Subject::find($i) ) {
-						$subject_name = $subject->subject_name;
-						$subject_score[$subject_name] = $subject->scores->sum('user_score');
-						$subject_total_questions[$subject_name] = $subject->scores->sum('total_questions');
+		# Recent score
+		$recent_score = DB::table('scores')
+							->where('user_id', '=', Auth::user()->id)
+							->orderBy('id', 'desc')
+							->get();
 
-						if ( $subject_score[$subject_name] != 0 AND $subject_total_questions[$subject_name] !=0 ) {
-							$subject_percentage[$subject_name] = round(($subject->scores->sum('user_score')/$subject->scores->sum('total_questions'))*100, 2);
-						}
-					}
-				}
+		$recent_score = array_slice($recent_score, 0, 1, true);
 				
 		return View::make('frontend.accounts.index')
-					->with('percentages', $subject_percentage);
+					->with('score_per_subject', $score_per_subject)
+					->with('recent_score', $recent_score);
 	}
 
 

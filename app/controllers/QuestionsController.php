@@ -43,11 +43,13 @@ class QuestionsController extends \BaseController {
 		// 	$exercise->exercise_icon = 'assets/img/questions/'.$filename;
 		// }
 
-		$image = Input::file('question_image');
-		$filename = time()."-".$image->getClientOriginalName();
-		$path = public_path('/assets/img/questions/'.$filename);
-		Image::make($image->getRealPath())->save($path);
-		$question->question_image = 'assets/img/questions/'.$filename;
+		if ( Input::hasFile('question_image') ) {
+			$image = Input::file('question_image');
+			$filename = time()."-".$image->getClientOriginalName();
+			$path = public_path('/assets/img/questions/'.$filename);
+			Image::make($image->getRealPath())->save($path);
+			$question->question_image = 'assets/img/questions/'.$filename;
+		}
 
 		$question->save();
 
@@ -77,16 +79,6 @@ class QuestionsController extends \BaseController {
 	}
 
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
 
 
 	/**

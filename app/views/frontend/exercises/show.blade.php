@@ -18,21 +18,23 @@
 				@if ( $question->question_image != null )
 				<img src="/{{ $question->question_image }}">
 				@endif
-				@foreach($question->answers->shuffle() as $answer)
-				<div class="form-group">
-					{{ Form::radio($count[$z], $answer->answer_correct) }}
-					{{ Form::label('') }}  {{$answer->answer_text}} <br>
+				<div class="qb-answer-group" >
+					@foreach($question->answers->shuffle() as $answer)
+					<div class="form-group qb-answers">
+						{{ Form::radio($count[$z], $answer->answer_correct) }}
+						{{ Form::label('') }}  {{$answer->answer_text}} <br>
+					</div>
+					<?php 
+						$i = $i+1;
+						$checkModulus = $i % 3;
+						if ( $checkModulus == 0){
+
+							$z = $z + 1;
+
+						}
+					 ?>
+					@endforeach
 				</div>
-				<?php 
-					$i = $i+1;
-					$checkModulus = $i % 3;
-					if ( $checkModulus == 0){
-
-						$z = $z + 1;
-
-					}
-				 ?>
-				@endforeach
 				<br>
 			</div>
 			@endforeach

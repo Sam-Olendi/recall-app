@@ -984,6 +984,7 @@ h1, h2, h3, h4, h5, h6 {
 	min-height: 100px;
 	width: 90%;
 	margin: 50px auto;
+	text-align: center;
 	border-radius: 5px;
   	border-style: solid;
   	border-width: 1px;
@@ -1020,6 +1021,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .quiz-score {
 	text-align: center;
+}
+
+.qb-answers {
+	margin-top: 20px;
+}
+
+.qb-answer-group {
+	border-top: 1px solid #f3f3f3;
+	padding-top: 20px;
 }
 
 
@@ -1119,8 +1129,7 @@ h1, h2, h3, h4, h5, h6 {
 	background-color: #F9FAFB;
 	height: 130px;
 	border-radius: 5px;
-	float: left;
-	margin-right: 50px;
+	margin: 30px 60px 30px 0;
 }
 
 .psb-icon {
@@ -1131,7 +1140,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .psb-score {
-	padding-top: 30px;
+	padding-top: 10px;
 }
 
 .psb-score-subject {

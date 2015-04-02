@@ -9,7 +9,8 @@ class SubjectsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$subjects = Subject::where('user_id', '=', Auth::user()->id)->paginate(5);
+		// $subjects = Subject::where('user_id', '=', Auth::user()->id)->paginate(5);
+		$subjects = Subject::paginate(5);
 		$query = Request::get('q');
 
 		if ($query) {

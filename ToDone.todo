@@ -48,6 +48,10 @@ Leftover Todos
 + Add most performed subject
 + Add reports per subject
 + Fix graph error: - Convert object to list item
++ Return if statement in case the data already exists
++ Remove restriction on reports
++ Catch the error caused by no scores/subject (check if array is empty)
++ Make the teacher automatically follow learner if they add them from the backend
 
 Bugs
 + On edit, images do not upload

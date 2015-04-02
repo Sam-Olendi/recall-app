@@ -44,7 +44,6 @@ Route::resource('books', 'BooksController', ['except' => 'show']);
 Route::resource('subjects', 'SubjectsController');
 Route::resource('subjects.exercises', 'ExercisesController');
 Route::resource('subjects.exercises.questions', 'QuestionsController', ['except' => 'index']);
-// Route::resource('subjects.exercises.questions.answers', 'AnswersController');
 
 
 
